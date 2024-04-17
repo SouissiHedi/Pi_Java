@@ -1,16 +1,16 @@
 package edu.esprit.entities;
 
-public class Personne {
+public class Article {
     public int id;
     public String nom;
-    public String prenom;
+    public int prix;
 
-    public Personne() {
+    public Article() {
     }
 
-    public Personne(String nom, String prenom) {
+    public Article(String nom, int prix) {
         this.nom = nom;
-        this.prenom = prenom;
+        this.prix = prix;
     }
 
     public int getId() {
@@ -29,20 +29,20 @@ public class Personne {
         this.nom = nom;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public int getPrix() {
+        return prix;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setPrix(int prix) {
+        this.prix = prix;
     }
 
     @Override
     public String toString() {
-        return "Personne{" +
+        return "Article{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
+                ", prix='" + prix + '\'' +
                 '}';
     }
 }
