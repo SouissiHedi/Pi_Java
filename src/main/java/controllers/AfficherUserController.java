@@ -26,7 +26,7 @@ public class AfficherUserController {
     @FXML
     private TableView<User> tableView;
 
-    public AfficherUserController() throws SQLException {
+    public AfficherUserController() {
     }
 
     @FXML

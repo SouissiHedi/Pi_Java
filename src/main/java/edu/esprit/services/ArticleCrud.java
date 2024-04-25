@@ -31,7 +31,7 @@ public class ArticleCrud implements ICrud<Article>{
         try {
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(req1);
             pst.setString(1,article.getNom());
-            pst.setInt(2,article.getPrix());
+            pst.setString(2,article.getPrix());
             pst.executeUpdate();
             System.out.println("Article ajoutée !");
         } catch (SQLException e) {
@@ -42,14 +42,14 @@ public class ArticleCrud implements ICrud<Article>{
     @Override
     public void modifier(Article article) {
         String nom = article.getNom();
-        int prix = article.getPrix();
+        String prix = article.getPrix();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             System.out.println("Entrer le nom:");
             nom = reader.readLine();
 
             System.out.println("Entrer le prix:");
-            prix = Integer.parseInt(reader.readLine());
+            prix = reader.readLine();
         } catch (IOException e) {
             System.out.println("Error reading input: " + e.getMessage());
         } catch (NumberFormatException e) {
@@ -102,7 +102,8 @@ public class ArticleCrud implements ICrud<Article>{
                 Article a = new Article();
                 a.setId(rs.getInt(1));
                 a.setNom(rs.getString("nom"));
-                a.setPrix(rs.getInt(3));
+                a.setPrix(rs.getString("prix"));
+                a.setDescription(rs.getString("description"));
                 articles.add(a);
             }
         } catch (SQLException e) {

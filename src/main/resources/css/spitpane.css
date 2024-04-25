@@ -1,0 +1,6 @@
+/* horizontal the two nodes are placed to the left/right of each other. */
+.split-pane *.split-pane-divider {
+    -fx-border-color:  #afdcec;
+    -fx-background-color: none;
+    -fx-background-insets: 0;
+}
