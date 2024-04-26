@@ -11,7 +11,7 @@ public interface IService<T> {
 
     void ajouter(T t) throws SQLException;
 
-    void modifier(T t) throws SQLException;
+    void modifier(T t) throws SQLException, IOException;
 
     void supprimer(int id) throws SQLException;
 

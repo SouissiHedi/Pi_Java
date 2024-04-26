@@ -1,6 +1,7 @@
 package edu.esprit.services;
 
 import edu.esprit.entities.Article;
+import edu.esprit.entities.Jeux;
 import edu.esprit.tools.MyConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,6 +38,11 @@ public class ArticleCrud implements ICrud<Article>{
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Override
+    public Article recuperer2(String i) throws SQLException, IOException {
+        return null;
     }
 
     @Override

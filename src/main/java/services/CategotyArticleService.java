@@ -81,8 +81,8 @@ public class CategotyArticleService implements IService<CategoryArticle> {
         ResultSet rs = statement.executeQuery(sql);
         CategoryArticle categoryArticle = new CategoryArticle();
         if (rs.next()) {
-            categoryArticle.setId(rs.getInt("id"));
-            categoryArticle.setNomCat(rs.getString("Nom Categorie"));
+            categoryArticle.setId(rs.getInt(1));
+            categoryArticle.setNomCat(rs.getString(2));
 
         } else {
             throw new SQLException("No category of articles found with ID "+i);

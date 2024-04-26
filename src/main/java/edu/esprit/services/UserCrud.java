@@ -1,7 +1,10 @@
 package edu.esprit.services;
 
+import edu.esprit.entities.Jeux;
 import edu.esprit.entities.User;
 import edu.esprit.tools.MyConnection;
+
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,6 +42,11 @@ public class UserCrud implements ICrud<User>{
     }
 
     @Override
+    public User recuperer2(String i) throws SQLException, IOException {
+        return null;
+    }
+
+    @Override
     public void modifier(User user) {
         String req = "UPDATE user SET email = '" + user.getEmail() + "', roles = '" + user.getRoles() + "', password = '" + user.getPassword() + "', image = '" + user.getImage() + "' WHERE id = '" + user.getId()+"'";
         try {
@@ -69,6 +77,8 @@ public class UserCrud implements ICrud<User>{
             System.out.println("Erreur lors de la suppression de l'utilisateur: " + e.getMessage());
         }
     }
+
+
 
     @Override
     public List<User> afficher() throws SQLException {

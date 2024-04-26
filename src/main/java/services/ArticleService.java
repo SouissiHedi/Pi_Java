@@ -47,12 +47,20 @@ public class ArticleService implements IService<Article> {
         }
     }
     @Override
-    public void modifier(Article article) throws SQLException {
-        String sql = "update article set nom = ?, prix = ? where id = ?";
+    public void modifier(Article article) throws SQLException, IOException {
+        String sql = "update article set article_id = ?,nom = ?, description = ?, prix = ?,type_id = ?, image = ? where id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, article.getNom());
-        preparedStatement.setString(2, article.getPrix());
-        preparedStatement.setInt(3, article.getId());
+        preparedStatement.setInt(1, article.getIdA());
+        preparedStatement.setString(2, article.getNom());
+        preparedStatement.setString(3, article.getDescription());
+        preparedStatement.setString(4, article.getPrix());
+        preparedStatement.setInt(5, article.getType().getId());
+        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(article.getImage(), null);
+        ByteArrayOutputStream BI = new ByteArrayOutputStream();
+        ImageIO.write(bufferedImage, "png", BI);
+        byte[] img = BI.toByteArray();
+        preparedStatement.setBytes(6, img);
+        preparedStatement.setInt(7, article.getId());
         preparedStatement.executeUpdate();
     }
 
@@ -100,6 +108,7 @@ public class ArticleService implements IService<Article> {
         Article article = new Article();
         if (rs.next()) {
             article.setId(rs.getInt("id"));
+            article.setIdA(rs.getInt("article_id"));
             article.setNom(rs.getString("nom"));
             article.setPrix(rs.getString("prix"));
             article.setDescription(rs.getString("description"));
@@ -116,7 +125,43 @@ public class ArticleService implements IService<Article> {
     }
 
     @Override
-    public Article recuperer2(String i) {
-        return null;
+    public Article recuperer2(String i) throws SQLException, IOException {
+        int val=Integer.parseInt(i);
+        String sql = "select * from article where id="+val;
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        Article article = new Article();
+        if (rs.next()) {
+            article.setId(rs.getInt("id"));
+            article.setIdA(rs.getInt("article_id"));
+            article.setNom(rs.getString("nom"));
+            article.setPrix(rs.getString("prix"));
+            article.setDescription(rs.getString("description"));
+            article.setType(cs.recuperer1(rs.getInt("type_id")));
+
+            Blob blob = rs.getBlob("image");
+            InputStream in = blob.getBinaryStream();
+            Image finalImg = new Image(in);
+            article.setImage(finalImg);
+        } else {
+            throw new SQLException("No article found with ID "+i);
+        }
+        return article;
     }
+
+
+    public boolean articleExists(int articleId) throws SQLException {
+        String query = "SELECT COUNT(*) FROM article WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, articleId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        }
+        return false;
+    }
+
 }

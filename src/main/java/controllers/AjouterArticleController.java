@@ -35,15 +35,31 @@ public class AjouterArticleController {
     public Image imag;
     @FXML
     private ImageView preview;
+    public int updating=0;
 
     @FXML
     private Label D;
+
+    @FXML
+    private Label CH;
+
+    @FXML
+    private Label CHT;
 
     @FXML
     private TextField prix;
 
     @FXML
     private Button upload;
+
+    @FXML
+    private Button b;
+
+    @FXML
+    private Button suppr;
+
+    @FXML
+    private Button Aj;
 
     @FXML
     private Label Xprix;
@@ -56,6 +72,9 @@ public class AjouterArticleController {
 
     @FXML
     private Text title;
+
+    @FXML
+    private TextField chois;
 
     @FXML
     private ComboBox<String> type;
@@ -93,49 +112,20 @@ public class AjouterArticleController {
     @FXML
     void enregistrer(ActionEvent event) throws SQLException, IOException {
         Article a = new Article();
-        if (desc.getText().isEmpty() || prix.getText().isEmpty() || nom.getText().isEmpty() || id.getText().isEmpty() || type.getValue() == null || imgState!=0) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("Tous les champs doivent être remplis.");
-            alert.showAndWait();
-        } else if (desc.getText().length() <10) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("La description ne peut pas être vide et contenir moins de 10 caractères.");
-            alert.showAndWait();
-
+        if (desc.getText().isEmpty() || prix.getText().isEmpty() || nom.getText().isEmpty() || id.getText().isEmpty() || type.getValue() == null || imgState != 0) {
+            showAlert("Erreur", "Tous les champs doivent être remplis.");
+        } else if (desc.getText().length() < 10) {
+            showAlert("Erreur", "La description ne peut pas être vide et contenir moins de 10 caractères.");
         } else if (!prix.getText().matches("\\d+(\\.\\d+)?") || Float.parseFloat(prix.getText()) < 0) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("Le prix ne peut pas être vide et ne contient que des chiffres. \n L'entrée doit être positive.");
-            alert.showAndWait();
-        } else if (nom.getText().length() <8) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("Le nom ne peut pas être vide et contenir moins de 8 caractères.");
-            alert.showAndWait();
+            showAlert("Erreur", "Le prix ne peut pas être vide et ne contient que des chiffres. \n L'entrée doit être positive.");
+        } else if (nom.getText().length() < 8) {
+            showAlert("Erreur", "Le nom ne peut pas être vide et contenir moins de 8 caractères.");
         } else if (Xtype.isVisible()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("Veuillez sélectionner un type");
-            alert.showAndWait();
-        }else if (Xid.isVisible()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("L'id ne peut pas être vide (chiffres uniquement).");
-            alert.showAndWait();
-        }else if (Ximage.isVisible()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("Veuillez choisir une image");
-            alert.showAndWait();
+            showAlert("Erreur", "Veuillez sélectionner un type");
+        } else if (Xid.isVisible()) {
+            showAlert("Erreur", "L'id ne peut pas être vide (chiffres uniquement).");
+        } else if (Ximage.isVisible()) {
+            showAlert("Erreur", "Veuillez choisir une image");
         } else {
             a.setDescription(desc.getText());
             a.setType(cs.recuperer2(type.getValue()));
@@ -143,7 +133,6 @@ public class AjouterArticleController {
             a.setPrix(prix.getText());
             a.setImage(imag);
             a.setNom(nom.getText());
-            System.out.println(a);
             ps.ajouter(a);
         }
     }
@@ -154,38 +143,36 @@ public class AjouterArticleController {
     public int id_a=-1;
     @FXML
     void initialize() throws SQLException, IOException {
+        chois.setVisible(false);
+        CH.setVisible(false);
+        CHT.setVisible(false);
+        suppr.setVisible(false);
         List<String> items =cs.recupererId();
         ObservableList<String> observableItems = FXCollections.observableArrayList(items);
         type.setItems(observableItems);
-        if(id_a!=-1) {
-            ArticleService as = new ArticleService();
-            Article article = as.recuperer1(id_a);
-            id.setText(Integer.toString(article.getIdA()));
-            nom.setText(article.getNom());
-            desc.setText(article.getDescription());
-            type.setValue(article.getType().getNomCat());
-            prix.setText(String.valueOf(article.getPrix()));
-            Xid.setVisible(false);
-            Xnom.setVisible(false);
-            Xdesc.setVisible(false);
-            Xtype.setVisible(false);
-            Ximage.setVisible(true);
-            Xprix.setVisible(false);
-            System.out.println(id_a);
+
+        title.setText("Ajouter Article");
+
+        if(id_a!=-1 && id_a!=-2) {
+            change();
         }
         desc.textProperty().addListener((observable, oldValue, newValue) -> {
             Xdesc.setVisible(newValue.length() < 10);
+            updating=1;
         });
         nom.textProperty().addListener((observable, oldValue, newValue) -> {
             Xnom.setVisible(newValue.length() < 8);
+            updating=1;
         });
         Xtype.visibleProperty().bind(type.getSelectionModel().selectedIndexProperty().isEqualTo(-1));
 
         prix.textProperty().addListener((observable, oldValue, newValue) -> {
             Xprix.setVisible(!isValidPrice(newValue));
+            updating=1;
         });
 
         id.textProperty().addListener((observable, oldValue, newValue) -> {
+            updating=1;
             if (!newValue.matches("\\d+") || Integer.parseInt(newValue) <= 0) {
                 Xid.setVisible(true);
             } else {
@@ -193,22 +180,23 @@ public class AjouterArticleController {
             }
         });
         upload.setOnAction(e->{
+            updating=1;
             FileChooser fileChooser = new FileChooser();
             File file = fileChooser.showOpenDialog(upload.getScene().getWindow());
-            try {
-                FileInputStream fileInputStream = new FileInputStream(file);
-                Image prev = new Image(fileInputStream);
-                imag = prev;
-                preview.setImage(prev);
-                Ximage.setVisible(false);
-            } catch (FileNotFoundException ex) {
-                throw new RuntimeException(ex);
+            if (file != null) {
+                try {
+                    FileInputStream fileInputStream = new FileInputStream(file);
+                    Image prev = new Image(fileInputStream);
+                    imag = prev;
+                    preview.setImage(prev);
+                    Ximage.setVisible(false);
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
-
         });
     }
     private boolean isValidPrice(String text) {
-        // Vérifier si le texte est vide
         if (text == null || text.isEmpty()) {
             return false;
         }
@@ -219,5 +207,105 @@ public class AjouterArticleController {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    public void supprimer(ActionEvent actionEvent) throws SQLException {
+        ps.supprimer(id_a);
+    }
+    public void choisir(ActionEvent actionEvent) throws SQLException, IOException {
+        if (id_a == -1) {
+            chois.setVisible(true);
+            CH.setVisible(true);
+            CHT.setVisible(true);
+            id_a = -2;
+        } else if (id_a  == -2){
+            String enteredValue = chois.getText();
+            if (isValidArticleId(enteredValue)) {
+                id_a= Integer.parseInt(enteredValue);
+                change();
+                updating=0;
+                chois.setVisible(false);
+                CH.setVisible(false);
+                CHT.setVisible(false);
+            } else {
+                showAlert("ID Invalide", "La valeur saisie n'est pas un ID valide d'un article.");
+            }
+        }else{
+            if (updating==1){
+                if (desc.getText().isEmpty() || prix.getText().isEmpty() || nom.getText().isEmpty() || id.getText().isEmpty() || type.getValue() == null || imgState != 0) {
+                    showAlert("Erreur", "Tous les champs doivent être remplis.");
+                } else if (desc.getText().length() < 10) {
+                    showAlert("Erreur", "La description ne peut pas être vide et contenir moins de 10 caractères.");
+                } else if (!prix.getText().matches("\\d+(\\.\\d+)?") || Float.parseFloat(prix.getText()) < 0) {
+                    showAlert("Erreur", "Le prix ne peut pas être vide et ne contient que des chiffres. \n L'entrée doit être positive.");
+                } else if (nom.getText().length() < 8) {
+                    showAlert("Erreur", "Le nom ne peut pas être vide et contenir moins de 8 caractères.");
+                } else if (Xtype.isVisible()) {
+                    showAlert("Erreur", "Veuillez sélectionner un type");
+                } else if (Xid.isVisible()) {
+                    showAlert("Erreur", "L'id ne peut pas être vide (chiffres uniquement).");
+                } else if (Ximage.isVisible()) {
+                    showAlert("Erreur", "Veuillez choisir une image");
+                }else{
+                    Article a =new Article();
+                    a.setDescription(desc.getText());
+                    a.setId(Integer.parseInt(chois.getText()));
+                    a.setType(cs.recuperer2(type.getValue()));
+                    a.setIdA(Integer.parseInt(id.getText()));
+                    a.setPrix(prix.getText());
+                    a.setImage(imag);
+                    a.setNom(nom.getText());
+                    ps.modifier(a);
+                    showAlert("Succès", "L'Article a été modifié");
+                    b.setVisible(true);
+                    updating=0;
+                    id_a=-1;
+                }
+            }else {
+                chois.setVisible(true);
+                CH.setVisible(true);
+                CHT.setVisible(true);
+                id_a=-2;
+            }
+        }
+    }
+
+    private boolean isValidArticleId(String id) {
+        try {
+            int articleId = Integer.parseInt(id);
+            ArticleService articleService = new ArticleService();
+            return articleService.articleExists(articleId);
+        } catch (NumberFormatException | SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+    private void change() throws SQLException, IOException {
+        title.setText("Modifier Article");
+        b.setVisible(false);
+        suppr.setVisible(true);
+        ArticleService as = new ArticleService();
+        Article article = as.recuperer2(String.valueOf(id_a));
+        id.setText(Integer.toString(article.getIdA()));
+        nom.setText(article.getNom());
+        desc.setText(article.getDescription());
+        type.setValue(article.getType().getNomCat());
+        prix.setText(String.valueOf(article.getPrix()));
+
+        preview.setImage(article.getImage());
+        imag =article.getImage();
+        Xid.setVisible(false);
+        Xnom.setVisible(false);
+        Xdesc.setVisible(false);
+        Ximage.setVisible(false);
+        Xprix.setVisible(false);
     }
 }
