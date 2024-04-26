@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherTournoiController">
+    <children>
+        <TableView fx:id="tableView" layoutX="54.0" layoutY="72.0" prefHeight="274.0" prefWidth="761.0">
+            <columns>
+                <TableColumn fx:id="tournoiIdCol" prefWidth="161.0" text="TournoiId" />
+                <TableColumn fx:id="typeCol" prefWidth="150.0" text="Type" />
+                <TableColumn fx:id="jeuIdCol" prefWidth="150.0" text="JeuId" />
+                <TableColumn fx:id="dateCol" prefWidth="150.0" text="Date" />
+                <TableColumn fx:id="countCol" prefWidth="150.0" text="Count" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
