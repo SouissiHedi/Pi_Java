@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="504.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReclamationController">
+   <children>
+      <Label fx:id="titre" graphicTextGap="0.0" layoutX="287.0" layoutY="48.0" text="Reponse" textFill="#000000e5">
+         <font>
+            <Font name="Calibri Bold" size="47.0" />
+         </font></Label>
+      <TextField fx:id="id" layoutX="215.0" layoutY="122.0" onKeyTyped="#handleQuestionInput" />
+      <TextField fx:id="description" layoutX="215.0" layoutY="200.0" onKeyTyped="#handlePriorityInput" />
+      <Button fx:id="btnCreate" layoutX="453.0" layoutY="325.0" mnemonicParsing="false" onAction="#enregistrer" style="-fx-background-color: #1e15c4;" text="save" />
+      <Button fx:id="btnReturn" layoutX="400.0" layoutY="325.0" mnemonicParsing="false" onAction="#returnToQuestions" style="-fx-background-color: #1e15c4;" text="return" textFill="#1d1d1e" />
+
+      <Text fx:id="error" fill="#fa3939" layoutX="215" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Label fx:id="t1" layoutX="119.0" layoutY="128.0" text="ID:">
+         <font>
+            <Font size="60.0" />
+         </font></Label>
+      <Label layoutX="92.0" layoutY="206.0" text="Description" />
+      <Label fx:id="errorLabel" layoutX="215.0" layoutY="99.0" textFill="red" />
+      <Accordion />
+      <Accordion />
+      <Text fx:id="Xnum" fill="#ec0808" layoutX="214.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le numero doit contenir uniquement des chiffres" />
+      <Text fx:id="Xdesc" fill="#df0505" layoutX="211.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La desciption ne doit pas etre vide et contenir moins de 10 carateres" />
+      <Button fx:id="modifier" layoutX="64.0" layoutY="328.0" mnemonicParsing="false" onAction="#choisir" prefHeight="16.0" prefWidth="91.0" text="Modifier" textFill="#280303" />
+   </children>
+   <stylesheets>
+      <URL value="@styles/newQuestionStyle.css" />
+   </stylesheets>
+</AnchorPane>

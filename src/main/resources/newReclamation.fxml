@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="504.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReclamationController">
+   <children>
+      <Label fx:id="titre" layoutX="255.0" layoutY="37.0" text="Reclamation" />
+      <TextField fx:id="id" layoutX="215.0" layoutY="122.0" onKeyTyped="#handleQuestionInput" />
+      <TextField fx:id="description" layoutX="215.0" layoutY="237.0" onKeyTyped="#handlePriorityInput" />
+      <Button fx:id="btnCreate" layoutX="453.0" layoutY="325.0" mnemonicParsing="false" onAction="#enregistrer" style="-fx-background-color: #1e15c4;" text="save" />
+      <Button fx:id="btnReturn" layoutX="400.0" layoutY="325.0" mnemonicParsing="false" onAction="#returnToQuestions" style="-fx-background-color: #1e15c4;" text="return" textFill="#1d1d1e" />
+
+      <Text fx:id="error" fill="#fa3939" layoutX="215" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Label fx:id="t1" layoutX="94.0" layoutY="126.0" text="Num:" />
+      <Label layoutX="96.0" layoutY="181.0" text="type :" />
+      <Label layoutX="94.0" layoutY="241.0" text="Description" />
+      <Label fx:id="errorLabel" layoutX="215.0" layoutY="99.0" textFill="red" />
+
+      <ChoiceBox fx:id="type" layoutX="214.0" layoutY="175.0" prefHeight="24.0" prefWidth="171.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="racism" />
+               <String fx:value="verbal abuse" />
+               <String fx:value="cursing" />
+            </FXCollections>
+         </items>
+      </ChoiceBox>
+      <Accordion />
+      <Accordion />
+      <Text fx:id="Xnum" fill="#ec0808" layoutX="214.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le numero doit contenir uniquement des chiffres" />
+      <Text fx:id="Xtype" fill="#df0909" layoutX="214.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez choisir un type" />
+      <Text fx:id="Xdesc" fill="#df0505" layoutX="214.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La desciption ne doit pas etre vide et contenir moins de 10 carateres" />
+      <Button fx:id="modifier" layoutX="49.0" layoutY="325.0" mnemonicParsing="false" onAction="#choisir" prefHeight="30.0" prefWidth="78.0" text="Modifier" textFill="#280303" />
+      <Text fx:id="CH" layoutX="137.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="num" />
+      <TextField fx:id="chois" layoutX="175.0" layoutY="325.0" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="suppr" layoutX="524.0" layoutY="325.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="30.0" prefWidth="93.0" style="-fx-background-color: red;" text="Supprimer" textFill="#280303" />
+   </children>
+   <stylesheets>
+      <URL value="@styles/newQuestionStyle.css" />
+   </stylesheets>
+</AnchorPane>

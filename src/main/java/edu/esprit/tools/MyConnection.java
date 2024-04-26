@@ -20,7 +20,7 @@ Connection cnx;
         }
     }
 
-    public Connection getCnx() {
+    public static Connection getCnx() {
         return cnx;
     }
 
