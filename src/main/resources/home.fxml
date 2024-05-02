@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="891.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.test">
+   <children>
+      <ImageView blendMode="SRC_ATOP" fitHeight="829.0" fitWidth="1335.0" layoutY="62.0" opacity="0.75" pickOnBounds="true">
+         <image>
+            <Image url="@images/backgr.jpg" />
+         </image>
+      </ImageView>
+      <Pane blendMode="SRC_ATOP" prefHeight="159.0" prefWidth="1335.0">
+         <children>
+            <ImageView fitHeight="300.0" fitWidth="1335.0" layoutY="-46.0" pickOnBounds="true" rotate="180.0">
+               <image>
+                  <Image url="@images/footer-bg.png" />
+               </image></ImageView>
+            <HBox layoutY="14.0" prefHeight="69.0" prefWidth="1335.0">
+               <children>
+                  <HBox fx:id="homeNav" onMouseClicked="#navhome" prefHeight="69.0" prefWidth="134.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/accueil.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="113.0" text="Acceuil">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navrec" prefHeight="69.0" prefWidth="160.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/rec.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="113.0" text="Réclamation">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navtroph" prefHeight="69.0" prefWidth="134.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/trophee.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="74.0" text="Trophées">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navtour" prefHeight="69.0" prefWidth="145.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/tournoi.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="75.0" text="Tournois">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navjeu" prefHeight="69.0" prefWidth="115.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/game.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="54.0" text="Jeux">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="69.0" prefWidth="490.0" spacing="10.0">
+                     <children>
+                        <Pane onMouseClicked="#navbout">
+                           <children>
+                              <Label layoutX="49.0" prefHeight="42.0" prefWidth="84.0" text="Boutique">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="37.0" fitWidth="34.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/article.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="69.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/user.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="127.0" text="Profil">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children></Pane>
+      <Pane layoutX="170.0" layoutY="202.0" opacity="0.6" prefHeight="619.0" prefWidth="995.0" style="-fx-background-color: white;">
+         <children>
+            <TextArea blendMode="DARKEN" depthTest="DISABLE" editable="false" layoutX="130.0" layoutY="156.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="449.0" prefWidth="735.0" style="-fx-border-width: 0; -fx-background-color: transparent; -fx-border-radius: 0; -fx-border-style: none; -fx-border-insets: 0;" text="     Bienvenue dans notre univers virtuel de divertissement ! Plongez dans &#10;une expérience immersive où l'aventure, l'action et l'excitation sont à &#10;portée de clic. &#10;&#10;     Notre application de jeux vidéo offre une large sélection de titres &#10;captivants, allant des jeux d'aventure épiques aux compétitions palpitantes.&#10;&#10;     Que vous soyez un explorateur intrépide, un stratège tactique ou un &#10;compétiteur acharné, vous trouverez ici un monde de possibilités infinies &#10;pour satisfaire votre passion du jeu.&#10;&#10;     Laissez-vous emporter par l'excitation et plongez dès maintenant&#10;dans l'aventure !">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextArea>
+            <TextField layoutX="360.0" layoutY="46.0" prefHeight="86.0" prefWidth="291.0" promptText="Burning Leaf" style="-fx-border-width: 0; -fx-background-color: transparent; -fx-border-radius: 0; -fx-border-style: none; -fx-border-insets: 0;-fx-text-fill: darkblue;-fx-font-weight: bold;" text="Burning Leaf">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font></TextField>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

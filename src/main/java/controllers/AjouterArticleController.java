@@ -94,6 +94,7 @@ public class AjouterArticleController {
     @FXML
     private Label Xid;
 
+
     @FXML
     private Label T;
 
@@ -242,12 +243,12 @@ public class AjouterArticleController {
                     showAlert("Erreur", "Le nom ne peut pas être vide et contenir moins de 8 caractères.");
                 } else if (Xtype.isVisible()) {
                     showAlert("Erreur", "Veuillez sélectionner un type");
-                } else if (Xid.isVisible()) {
+                } else if (Xid.isVisible() ){
                     showAlert("Erreur", "L'id ne peut pas être vide (chiffres uniquement).");
-                } else if (Ximage.isVisible()) {
+                } else if (!Ximage.isVisible()) {
                     showAlert("Erreur", "Veuillez choisir une image");
                 }else{
-                    Article a =new Article();
+                    Article a = new Article();
                     a.setDescription(desc.getText());
                     a.setId(Integer.parseInt(chois.getText()));
                     a.setType(cs.recuperer2(type.getValue()));
@@ -258,8 +259,8 @@ public class AjouterArticleController {
                     ps.modifier(a);
                     showAlert("Succès", "L'Article a été modifié");
                     b.setVisible(true);
-                    updating=0;
-                    id_a=-1;
+                    updating = 0;
+                    id_a = -1;
                 }
             }else {
                 chois.setVisible(true);

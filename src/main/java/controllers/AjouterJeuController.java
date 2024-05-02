@@ -49,6 +49,9 @@ public class AjouterJeuController {
     private Button b;
 
     @FXML
+    private Button suppr;
+
+    @FXML
     private Label Xgenre;
 
     @FXML
@@ -200,11 +203,33 @@ public class AjouterJeuController {
             }
         }else{
             if (updating==1){
+                if (idJ.getText().isEmpty() || genre.getText().isEmpty() || nom.getText().isEmpty() || id.getText().isEmpty() || imgState != 0) {
+                    showAlert("Erreur", "Tous les champs doivent être remplis.");
+                } else if (nom.getText().length() < 3) {
+                    showAlert("Erreur", "Le nom doit contenir plus que  3 caractères .");
+                } else if (genre.getText().isEmpty()) {
+                    showAlert("Erreur", "Le genre ne peut pas être vide .");
+                } else if (nom.getText().length() < 3) {
+                    showAlert("Erreur", "Le nom ne peut pas être vide et contenir moins de 3 caractères.");
+                } else if (!idJ.getText().matches("\\d+(\\.\\d+)?") || Float.parseFloat(idJ.getText()) < 0) {
+                    showAlert("Erreur", "L'id du joueur ne peut pas être vide (chiffres uniquement).");
+                } else if (Xid.isVisible()) {
+                    showAlert("Erreur", "L'id ne peut pas être vide (chiffres uniquement).");
+                } else if (Ximage.isVisible()) {
+                    showAlert("Erreur", "Veuillez choisir une image");
+                } else {
+                    Jeux j =new Jeux();
+                    j.setId(Integer.parseInt(id.getText()));
+                    j.setJeu_id(Integer.parseInt(idJ.getText()));
+                    j.setGenre(genre.getText());
+                    j.setImage(imag);
+                    j.setNom(nom.getText());
+                    js.modifier(j);
                     showAlert("Succès", "L'Article a été modifié");
                     b.setVisible(true);
                     updating=0;
                     id_a=-1;
-
+                }
             }else {
                 chois.setVisible(true);
                 CH.setVisible(true);
@@ -224,6 +249,10 @@ public class AjouterJeuController {
             return false;
         }
     }
+    public void supprimer(ActionEvent actionEvent) throws SQLException {
+        System.out.println("z");
+        js.supprimer(id_a);
+    }
 
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -233,7 +262,7 @@ public class AjouterJeuController {
         alert.showAndWait();
     }
     private void change() throws SQLException, IOException {
-        title.setText("Modifier Article");
+        title.setText("Modifier Jeu");
         b.setVisible(false);
         JeuxCrud js = new JeuxCrud();
         Jeux jeux = js.recuperer2(String.valueOf(id_a));
@@ -249,5 +278,6 @@ public class AjouterJeuController {
         Xgenre.setVisible(false);
         Ximage.setVisible(false);
         XidJ.setVisible(false);
+        suppr.setVisible(true);
     }
 }

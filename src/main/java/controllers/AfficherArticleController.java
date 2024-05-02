@@ -2,17 +2,16 @@ package controllers;
 
 import edu.esprit.entities.Article;
 import edu.esprit.entities.CategoryArticle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import services.ArticleService;
-import javafx.scene.control.TableCell;
 import javafx.beans.property.SimpleObjectProperty;
 
 import java.io.IOException;
@@ -35,6 +34,8 @@ public class AfficherArticleController {
     private TableColumn<Article, Image> imageCol;
     @FXML
     private TableView<Article> tableView;
+    @FXML
+    private Label title;
 
     public AfficherArticleController() throws SQLException {
     }
@@ -45,11 +46,15 @@ public class AfficherArticleController {
             List<Article> articles = ps.recuperer();
             ObservableList<Article> observableList = FXCollections.observableList(articles);
             tableView.setItems(observableList);
-
+            title.setText("Liste des Articles");
             nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
             prixCol.setCellValueFactory(new PropertyValueFactory<>("prix"));
             descCol.setCellValueFactory(new PropertyValueFactory<>("description"));
-            typeCol.setCellValueFactory(new PropertyValueFactory<>("type_id"));
+            typeCol.setCellValueFactory(cellData -> {
+                Article article = cellData.getValue();
+                CategoryArticle category = article.getType(); // Assuming getCategory() returns the CategoryArticle
+                return new SimpleStringProperty(category.getNomCat());
+            });
             idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
 
             imageCol.setCellValueFactory(cellData -> {

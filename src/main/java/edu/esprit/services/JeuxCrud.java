@@ -1,6 +1,5 @@
 package edu.esprit.services;
 
-import edu.esprit.entities.Article;
 import edu.esprit.entities.Jeux;
 import edu.esprit.tools.MyConnection;
 import javafx.embed.swing.SwingFXUtils;
@@ -19,13 +18,13 @@ public class JeuxCrud  implements ICrud<Jeux>{
 
     private Connection connection;
 
-    public void JeuxService() throws SQLException {
+    public JeuxCrud() throws SQLException {
         connection = MyConnection.getInstance().getCnx();
     }
 
     @Override
     public void ajouter(Jeux jeux) throws SQLException {
-        String sql = "insert into jeu (id,jeu_id,nom,genre,image)  VALUES (?,?,?, ?, ?)";
+        String sql = "insert into jeu (id,jeu_id,nom,genre,developpeur,image)  VALUES (?,?,?,?, ?, ?)";
         try {
             // Assurez-vous que la connexion est correctement initialisée ailleurs dans votre classe
             if (connection == null) {
@@ -39,11 +38,12 @@ public class JeuxCrud  implements ICrud<Jeux>{
             preparedStatement.setInt(2, jeux.getJeu_id());
             preparedStatement.setString(3, jeux.getNom());
             preparedStatement.setString(4, jeux.getGenre());
+            preparedStatement.setString(5, " ");
             BufferedImage bufferedImage = SwingFXUtils.fromFXImage(jeux.getImage(), null);
             ByteArrayOutputStream BI = new ByteArrayOutputStream();
             ImageIO.write(bufferedImage, "png", BI);
             byte[] img = BI.toByteArray();
-            preparedStatement.setBytes(5, img);
+            preparedStatement.setBytes(6, img);
             System.out.println("Article ajouté !");
             preparedStatement.executeUpdate();
         } catch (SQLException | IOException e) {
@@ -100,6 +100,25 @@ public class JeuxCrud  implements ICrud<Jeux>{
     }
 
 
+    @Override
+    public void supprimer(int id) throws SQLException {
+        String sql = "delete from jeu where id = ?";
+
+        try {
+            // Assurez-vous que la connexion est correctement initialisée ailleurs dans votre classe
+            if (connection == null) {
+                // Gérez le cas où la connexion est nulle
+                System.out.println("La connexion à la base de données est nulle. Impossible d'exécuter la requête.");
+                return;
+            }
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 
     @Override

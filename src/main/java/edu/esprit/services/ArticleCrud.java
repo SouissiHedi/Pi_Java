@@ -27,6 +27,11 @@ public class ArticleCrud implements ICrud<Article>{
     }
 
     @Override
+    public void supprimer(int id) throws SQLException {
+
+    }
+
+    @Override
     public void ajouter2(Article article) throws SQLException {
         String req1="INSERT INTO article(nom,prix) VALUES (?,?)";
         try {

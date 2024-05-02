@@ -91,8 +91,12 @@ public class Article {
     public String toString() {
         return "Article{" +
                 "id=" + id +
+                ", idA=" + idA +
                 ", nom='" + nom + '\'' +
                 ", prix='" + prix + '\'' +
+                ", description='" + description + '\'' +
+                ", type=" + type +
+                ", image=" + image +
                 '}';
     }
 }

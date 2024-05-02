@@ -40,6 +40,10 @@ public class Jeu_partieCrud implements ICrud<JeuPartie>{
             }
         }
 
+    @Override
+    public void supprimer(int id) throws SQLException {
+
+    }
 
 
     @Override

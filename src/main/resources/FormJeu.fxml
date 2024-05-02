@@ -230,13 +230,14 @@
                   <String fx:value="text-field-black-border" />
                </styleClass>
             </TextField>
-            <Label fx:id="CHT" layoutX="156.0" layoutY="705.0" prefHeight="21.0" prefWidth="573.0" text="Choisir un article à modifier" textFill="#0a0909" />
+            <Label fx:id="CHT" layoutX="156.0" layoutY="705.0" prefHeight="21.0" prefWidth="573.0" text="Choisir un jeu à modifier" textFill="#0a0909" />
             <Label fx:id="CH" layoutX="122.0" layoutY="736.0" prefHeight="25.0" prefWidth="20.0" text="Id">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
             <Label fx:id="Ximage" layoutX="143.0" layoutY="465.0" prefHeight="21.0" prefWidth="669.0" text="Veuillez choisir une image" textFill="RED" />
+            <Button fx:id="suppr" layoutX="598.0" layoutY="726.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: #e85345;" text="Supprimer" visible="false" />
          </children>
       </Pane>
    </children>

@@ -26,6 +26,11 @@ public class UserCrud implements ICrud<User>{
     }
 
     @Override
+    public void supprimer(int id) throws SQLException {
+
+    }
+
+    @Override
     public void ajouter2(User user) throws SQLException {
         String req1="INSERT INTO user(email, roles, password, image) VALUES (?,?,?,?)";
         try {

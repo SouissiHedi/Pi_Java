@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.collections.FXCollections?>
@@ -15,13 +16,15 @@
    <children>
       <HBox layoutX="20.0" layoutY="20.0" prefHeight="60.0" prefWidth="1315.0" spacing="20.0">
          <children>
-            <Label alignment="CENTER" prefHeight="48.0" prefWidth="172.0" text="Burning Leaf" textFill="#2a7fdb">
-               <font>
-                  <Font name="System Bold Italic" size="18.0" />
-               </font>
-            </Label>
             <Separator nodeOrientation="RIGHT_TO_LEFT" orientation="VERTICAL" prefHeight="41.0" prefWidth="0.0" />
-            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER" layoutX="-50.0" layoutY="-26.0" prefHeight="68.0" prefWidth="221.5" style="-: ;" text="Burning Leaf" textFill="#2a7fdb">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
             <ImageView fitHeight="52.0" fitWidth="676.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../demo/src/main/resources/image/logo.png" />
@@ -29,7 +32,7 @@
             </ImageView>
          </children>
       </HBox>
-      <VBox layoutX="20.0" layoutY="80.0" prefHeight="811.0" prefWidth="180.0">
+      <VBox layoutX="-1.0" layoutY="55.0" prefHeight="836.0" prefWidth="221.0" style="-fx-background-color: LIGHTBLUE;">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -260,8 +263,8 @@
                   <String fx:value="text-field-black-border" />
                </styleClass>
             </TextField>
-            <Button fx:id="Aj" layoutX="437.0" layoutY="657.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: #15a217;" text="Ajouter" />
-            <Button fx:id="suppr" layoutX="593.0" layoutY="731.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: #e85345;" text="Supprimer" />
+            <Button fx:id="Aj" layoutX="437.0" layoutY="657.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: #15a217;" text="Ajouter" visible="false" />
+            <Button fx:id="suppr" layoutX="593.0" layoutY="731.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: #e85345;" text="Supprimer" visible="false" />
          </children>
       </Pane>
    </children>

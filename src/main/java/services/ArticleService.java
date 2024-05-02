@@ -5,6 +5,8 @@ import edu.esprit.entities.Article;
 import edu.esprit.tools.MyConnection;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import java.io.ByteArrayOutputStream;
 import javax.imageio.ImageIO;
@@ -74,7 +76,7 @@ public class ArticleService implements IService<Article> {
 
     @Override
     public List<Article> recuperer() throws SQLException, IOException {
-        String sql = "select * from article";
+        String sql = "SELECT * FROM article";
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sql);
         List<Article> articles = new ArrayList<>();
@@ -84,13 +86,19 @@ public class ArticleService implements IService<Article> {
             p.setNom(rs.getString("nom"));
             p.setPrix(rs.getString("prix"));
             p.setDescription(rs.getString("description"));
+            p.setType(cs.recuperer1(rs.getInt("type_id")));
 
-            Blob blob = rs.getBlob("image");
-            InputStream in = blob.getBinaryStream();
-            BufferedImage image = ImageIO.read(in);
-            Image finalImg = SwingFXUtils.toFXImage(image, null );
-            p.setImage(finalImg);
+
+            String imageUrl = rs.getString("image");
+            imageUrl = "http://localhost/images/" + imageUrl;
+            try {
+                Image finalImg = new Image(new URL(imageUrl).toString());
+                p.setImage(finalImg);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
             articles.add(p);
+            System.out.println(p);
         }
         return articles;
     }
@@ -114,10 +122,16 @@ public class ArticleService implements IService<Article> {
             article.setDescription(rs.getString("description"));
             article.setType(cs.recuperer1(rs.getInt("type_id")));
 
-            Blob blob = rs.getBlob("image");
-            InputStream in = blob.getBinaryStream();
-            Image finalImg = new Image(in);
-            article.setImage(finalImg);
+            String imageUrl = rs.getString("image");
+            imageUrl = "http://localhost/images/" + imageUrl;
+            try {
+                // Create an Image object from the URL
+                Image finalImg = new Image(new URL(imageUrl).toString());
+                article.setImage(finalImg);
+            } catch (MalformedURLException e) {
+                // Handle malformed URL exception
+                e.printStackTrace();
+            }
         } else {
             throw new SQLException("No article found with ID "+i);
         }
@@ -139,10 +153,16 @@ public class ArticleService implements IService<Article> {
             article.setDescription(rs.getString("description"));
             article.setType(cs.recuperer1(rs.getInt("type_id")));
 
-            Blob blob = rs.getBlob("image");
-            InputStream in = blob.getBinaryStream();
-            Image finalImg = new Image(in);
-            article.setImage(finalImg);
+            String imageUrl = rs.getString("image");
+            imageUrl = "http://localhost/images/" + imageUrl;
+            try {
+                // Create an Image object from the URL
+                Image finalImg = new Image(new URL(imageUrl).toString());
+                article.setImage(finalImg);
+            } catch (MalformedURLException e) {
+                // Handle malformed URL exception
+                e.printStackTrace();
+            }
         } else {
             throw new SQLException("No article found with ID "+i);
         }
