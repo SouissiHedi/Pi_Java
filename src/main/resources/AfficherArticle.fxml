@@ -8,7 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="891.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.test">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="891.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView blendMode="SRC_ATOP" fitHeight="829.0" fitWidth="1335.0" layoutY="62.0" opacity="0.75" pickOnBounds="true">
          <image>
@@ -151,21 +151,43 @@
          </children></Pane>
       <Pane layoutX="170.0" layoutY="202.0" prefHeight="619.0" prefWidth="995.0" style="-fx-background-color: rgba(255, 255, 255, 0.6);">
          <children>
-            <TextArea blendMode="DARKEN" depthTest="DISABLE" editable="false" layoutX="130.0" layoutY="156.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="449.0" prefWidth="735.0" style="-fx-border-width: 0; -fx-background-color: transparent; -fx-border-radius: 0; -fx-border-style: none; -fx-border-insets: 0;" text="     Bienvenue dans notre univers virtuel de divertissement ! Plongez dans &#10;une expérience immersive où l'aventure, l'action et l'excitation sont à &#10;portée de clic. &#10;&#10;     Notre application de jeux vidéo offre une large sélection de titres &#10;captivants, allant des jeux d'aventure épiques aux compétitions palpitantes.&#10;&#10;     Que vous soyez un explorateur intrépide, un stratège tactique ou un &#10;compétiteur acharné, vous trouverez ici un monde de possibilités infinies &#10;pour satisfaire votre passion du jeu.&#10;&#10;     Laissez-vous emporter par l'excitation et plongez dès maintenant&#10;dans l'aventure !">
+            <Label blendMode="SRC_ATOP" layoutX="546.0" layoutY="180.0" prefHeight="34.0" prefWidth="67.0" text="Nom :">
                <font>
-                  <Font size="21.0" />
+                  <Font size="23.0" />
                </font>
-            </TextArea>
-            <TextField layoutX="360.0" layoutY="46.0" prefHeight="86.0" prefWidth="291.0" promptText="Burning Leaf" style="-fx-border-width: 0; -fx-background-color: transparent; -fx-border-radius: 0; -fx-border-style: none; -fx-border-insets: 0;-fx-text-fill: darkblue;-fx-font-weight: bold;" text="Burning Leaf">
+            </Label>
+            <Label blendMode="SRC_ATOP" layoutX="482.0" layoutY="356.0" prefHeight="34.0" prefWidth="133.0" text="Description :">
                <font>
-                  <Font name="System Bold" size="40.0" />
-               </font></TextField>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/logo.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label blendMode="SRC_ATOP" layoutX="549.0" layoutY="285.0" prefHeight="34.0" prefWidth="61.0" text="Type :">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label blendMode="SRC_ATOP" layoutX="560.0" layoutY="233.0" prefHeight="34.0" prefWidth="54.0" text="Prix :">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="I" blendMode="SRC_ATOP" fitHeight="387.0" fitWidth="413.0" layoutX="47.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="N" blendMode="SRC_ATOP" layoutX="634.0" layoutY="176.0" prefHeight="42.0" prefWidth="326.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label fx:id="L" blendMode="SRC_ATOP" layoutX="634.0" layoutY="229.0" prefHeight="42.0" prefWidth="326.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label fx:id="T" blendMode="SRC_ATOP" layoutX="634.0" layoutY="281.0" prefHeight="42.0" prefWidth="326.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label fx:id="D" alignment="TOP_LEFT" blendMode="SRC_ATOP" layoutX="634.0" layoutY="360.0" prefHeight="139.0" prefWidth="326.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+         </children></Pane>
    </children>
 </AnchorPane>

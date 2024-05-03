@@ -12,7 +12,6 @@ import java.io.ByteArrayOutputStream;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -98,7 +97,6 @@ public class ArticleService implements IService<Article> {
                 e.printStackTrace();
             }
             articles.add(p);
-            System.out.println(p);
         }
         return articles;
     }
@@ -169,6 +167,36 @@ public class ArticleService implements IService<Article> {
         return article;
     }
 
+    @Override
+    public Article recupererNom(String n) throws SQLException, IOException {
+        String sql = "select * from article where nom LIKE '" + n + "'";
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        Article article = new Article();
+        if (rs.next()) {
+            article.setId(rs.getInt("id"));
+            article.setIdA(rs.getInt("article_id"));
+            article.setNom(rs.getString("nom"));
+            article.setPrix(rs.getString("prix"));
+            article.setDescription(rs.getString("description"));
+            article.setType(cs.recuperer1(rs.getInt("type_id")));
+
+            String imageUrl = rs.getString("image");
+            imageUrl = "http://localhost/images/" + imageUrl;
+            try {
+                // Create an Image object from the URL
+                Image finalImg = new Image(new URL(imageUrl).toString());
+                article.setImage(finalImg);
+            } catch (MalformedURLException e) {
+                // Handle malformed URL exception
+                e.printStackTrace();
+            }
+        } else {
+            throw new SQLException("No article found with name "+n);
+        }
+        return article;
+    }
+
 
     public boolean articleExists(int articleId) throws SQLException {
         String query = "SELECT COUNT(*) FROM article WHERE id = ?";
@@ -182,6 +210,18 @@ public class ArticleService implements IService<Article> {
             }
         }
         return false;
+    }
+
+    public int articleCount() throws SQLException {
+        String query = "SELECT COUNT(*) FROM article";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt(1);
+                }
+            }
+        }
+        return -1;
     }
 
 }

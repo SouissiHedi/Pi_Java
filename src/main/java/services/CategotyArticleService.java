@@ -1,6 +1,7 @@
 package services;
 
 
+import edu.esprit.entities.Article;
 import edu.esprit.entities.CategoryArticle;
 import edu.esprit.tools.MyConnection;
 
@@ -105,5 +106,10 @@ public class CategotyArticleService implements IService<CategoryArticle> {
             throw new SQLException("No category of articles found with ID "+i);
         }
         return categoryArticle;
+    }
+
+    @Override
+    public Article recupererNom(String n) throws SQLException, IOException {
+        return null;
     }
 }

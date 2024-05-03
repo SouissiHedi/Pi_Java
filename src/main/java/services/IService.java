@@ -22,4 +22,6 @@ public interface IService<T> {
     T recuperer1(int i) throws SQLException, IOException;
 
     T recuperer2(String i) throws SQLException, IOException;
+
+    Article recupererNom(String n) throws SQLException, IOException;
 }
