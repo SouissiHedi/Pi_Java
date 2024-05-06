@@ -12,7 +12,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import services.ArticleService;
 
 import javax.imageio.ImageIO;
@@ -38,6 +43,9 @@ public class AfficherBoutiqueController {
 
     @FXML
     private Label N1;
+
+    @FXML
+    private StackPane pan;
 
     @FXML
     private Label P3;
@@ -91,6 +99,15 @@ public class AfficherBoutiqueController {
     private ImageView B3;
 
     @FXML
+    private StackPane sp1;
+
+    @FXML
+    private StackPane sp2;
+
+    @FXML
+    private StackPane sp3;
+
+    @FXML
     private ImageView left;
 
     public AfficherBoutiqueController() throws SQLException {
@@ -104,6 +121,7 @@ public class AfficherBoutiqueController {
         Label[] prices = {P1,P2,P3};
         ImageView[] views = {im1,im2,im3};
         ImageView[] buttons = {B1,B2,B3};
+        StackPane[] stak = {sp1,sp2,sp3};
         List<Article> articles = ps.recuperer();
 
         int c=ps.articleCount();
@@ -154,14 +172,14 @@ public class AfficherBoutiqueController {
         });
 
 
-        resetT(articles,names, descs,prices,views);
+        resetT(articles,names, descs,prices,views,stak);
         right.setOnMouseClicked(event -> {
             if (page<pageMax) {
                 try {
                     if(page==0){left.setVisible(true);}
                     page++;
                     if(page==pageMax){right.setVisible(false);}
-                    resetT(articles, names, descs, prices, views);
+                    resetT(articles, names, descs, prices, views,stak);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 } catch (IOException e) {
@@ -175,7 +193,7 @@ public class AfficherBoutiqueController {
                     if(page==pageMax){right.setVisible(true);}
                     page--;
                     if(page==0){left.setVisible(false);}
-                    resetT(articles, names, descs, prices, views);
+                    resetT(articles, names, descs, prices, views,stak);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 } catch (IOException e) {
@@ -184,14 +202,39 @@ public class AfficherBoutiqueController {
             }
         });
 
+        pan.setOnMouseClicked(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/panier.fxml"));
+                Parent root = loader.load();
+                Stage panStage = new Stage();
+
+                // Create the rectangular clip to round the corners
+                javafx.scene.shape.Rectangle rect = new Rectangle(1024, 768);
+                rect.setArcHeight(60.0);
+                rect.setArcWidth(60.0);
+
+                // Create the scene
+                Scene scene = new Scene(root, 300, 400);
+                panStage.initStyle(StageStyle.TRANSPARENT);
+                scene.setFill(Color.TRANSPARENT);
+                panStage.setTitle("Hello World!");
+                panStage.setScene(scene);
+                panStage.showAndWait();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
     }
-    public void resetT( List<Article> articles,Label[] names,Label[] descs,Label[] prices,ImageView[] views) throws SQLException, IOException {
+    public void resetT(List<Article> articles, Label[] names, Label[] descs, Label[] prices, ImageView[] views, StackPane[] stak) throws SQLException, IOException {
         for (int a=0;a<+3;a++) {
             names[a].setText(articles.get(page+a).getNom());
             views[a].setImage(articles.get(page+a).getImage());
             descs[a].setText(articles.get(page+a).getDescription());
             prices[a].setText(articles.get(page+a).getPrix());
+            double h=(views[a].getFitHeight() - views[a].getBoundsInParent().getHeight())/2;
+            double w=(views[a].getFitWidth() - views[a].getBoundsInParent().getWidth())/2;
+            stak[a].setMargin(views[a],new javafx.geometry.Insets(h, 0, 0, w));
         }
     }
     public static int getIndex(ImageView[] array, ImageView targetValue) {

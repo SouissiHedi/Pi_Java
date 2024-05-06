@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -8,129 +9,122 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="891.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherBoutiqueController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="891.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherArticleController">
    <children>
       <Pane layoutY="67.0" prefHeight="827.0" prefWidth="1335.0" style="-fx-background-color: white;">
          <children>
             <ImageView fitHeight="827.0" fitWidth="1335.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/try.png" />
+                  <Image url="@images/Fback.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="528.0" layoutY="136.0" prefHeight="62.0" prefWidth="280.0" text="BOUTIQUE" textFill="#1a00c3">
-               <font>
-                  <Font name="Cambria" size="40.0" />
-               </font>
-            </Label>
             <ImageView fx:id="left" fitHeight="62.0" fitWidth="75.0" layoutX="127.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/left.png" />
+                  <Image url="@images/Bleft.png" />
                </image>
             </ImageView>
             <ImageView fx:id="right" fitHeight="62.0" fitWidth="62.0" layoutX="1143.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/right.png" />
+                  <Image url="@images/Bright.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="C1" fitHeight="397.0" fitWidth="310.0" layoutX="198.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="C1" fitWidth="310.0" layoutX="188.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/FondArticle.png" />
+                  <Image url="@images/BFondArticle.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="C2" fitHeight="397.0" fitWidth="310.0" layoutX="520.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="C2" fitWidth="310.0" layoutX="513.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/FondArticle.png" />
+                  <Image url="@images/BFondArticle.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="C3" fitHeight="397.0" fitWidth="310.0" layoutX="842.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="C3" fitWidth="310.0" layoutX="833.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/FondArticle.png" />
+                  <Image url="@images/BFondArticle.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="B1" fitHeight="69.0" fitWidth="299.0" layoutX="200.0" layoutY="683.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/bouton.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="B2" fitHeight="69.0" fitWidth="299.0" layoutX="525.0" layoutY="683.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="B1" fitHeight="50.0" fitWidth="289.0" layoutX="200.0" layoutY="654.0" pickOnBounds="true">
                <image>
                   <Image url="@images/bouton.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="B3" fitHeight="69.0" fitWidth="299.0" layoutX="845.0" layoutY="683.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="B2" fitHeight="50.0" fitWidth="289.0" layoutX="525.0" layoutY="654.0" pickOnBounds="true">
                <image>
                   <Image url="@images/bouton.png" />
                </image>
             </ImageView>
-            <StackPane fx:id="sp1" layoutX="229.0" layoutY="289.0">
+            <ImageView fx:id="B3" fitHeight="50.0" fitWidth="289.0" layoutX="845.0" layoutY="654.0" pickOnBounds="true">
+               <image>
+                  <Image url="@images/bouton.png" />
+               </image>
+            </ImageView>
+            <StackPane fx:id="sp1" layoutX="226.0" layoutY="165.0">
                <children>
-                  <ImageView fx:id="im1" fitHeight="218.0" fitWidth="235.0" layoutX="229.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="im1" fitHeight="218.0" fitWidth="235.0" layoutX="226.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </StackPane>
-            <StackPane fx:id="sp2" layoutX="552.0" layoutY="289.0">
+            <StackPane fx:id="sp2" layoutX="551.0" layoutY="165.0">
                <children>
-                  <ImageView fx:id="im2" fitHeight="218.0" fitWidth="235.0" layoutX="552.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="im2" fitHeight="218.0" fitWidth="235.0" layoutX="551.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </StackPane>
-            <StackPane fx:id="sp3" layoutX="873.0" layoutY="289.0">
+            <StackPane fx:id="sp3" layoutX="871.0" layoutY="165.0">
                <children>
-                  <ImageView fx:id="im3" fitHeight="218.0" fitWidth="235.0" layoutX="873.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="im3" fitHeight="218.0" fitWidth="235.0" layoutX="871.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </StackPane>
-            <Label fx:id="N1" alignment="CENTER" layoutX="221.0" layoutY="517.0" prefHeight="34.0" prefWidth="244.0" text="art1" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="N1" alignment="CENTER" layoutX="224.0" layoutY="397.0" prefHeight="34.0" prefWidth="244.0" text="art1" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="N2" alignment="CENTER" layoutX="546.0" layoutY="517.0" prefHeight="34.0" prefWidth="244.0" text="art2" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="N2" alignment="CENTER" layoutX="549.0" layoutY="397.0" prefHeight="34.0" prefWidth="244.0" text="art2" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="N3" alignment="CENTER" layoutX="866.0" layoutY="517.0" prefHeight="34.0" prefWidth="244.0" text="art3" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="N3" alignment="CENTER" layoutX="869.0" layoutY="397.0" prefHeight="34.0" prefWidth="244.0" text="art3" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="D2" alignment="CENTER" layoutX="546.0" layoutY="550.0" prefHeight="86.0" prefWidth="244.0" text="Label" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+            <Label fx:id="D2" alignment="CENTER" layoutX="546.0" layoutY="495.0" prefHeight="131.0" prefWidth="244.0" text="Label" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
-            <Label fx:id="D3" alignment="CENTER" layoutX="866.0" layoutY="550.0" prefHeight="86.0" prefWidth="244.0" text="Label" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+            <Label fx:id="D3" alignment="CENTER" layoutX="866.0" layoutY="495.0" prefHeight="131.0" prefWidth="244.0" text="Label" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
-            <Label fx:id="D1" alignment="CENTER" layoutX="221.0" layoutY="550.0" prefHeight="86.0" prefWidth="244.0" text="Label" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+            <Label fx:id="D1" alignment="CENTER" layoutX="221.0" layoutY="495.0" prefHeight="131.0" prefWidth="244.0" text="Label" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="P1" alignment="CENTER" contentDisplay="RIGHT" layoutX="221.0" layoutY="701.0" prefHeight="34.0" prefWidth="244.0" text="p1" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="M1" alignment="CENTER" contentDisplay="RIGHT" layoutX="221.0" layoutY="662.0" prefHeight="34.0" prefWidth="244.0" text="Modifier" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/coin.png" />
-                     </image></ImageView>
-               </graphic>
                <padding>
                   <Insets right="10.0" />
                </padding>
             </Label>
-            <Label fx:id="P2" alignment="CENTER" contentDisplay="RIGHT" layoutX="552.0" layoutY="701.0" prefHeight="34.0" prefWidth="244.0" text="p2" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="M2" alignment="CENTER" contentDisplay="RIGHT" layoutX="552.0" layoutY="663.0" prefHeight="34.0" prefWidth="244.0" text="Modifier" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/coin.png" />
-                     </image></ImageView>
-               </graphic>
             </Label>
-            <Label fx:id="P3" alignment="CENTER" contentDisplay="RIGHT" layoutX="866.0" layoutY="701.0" prefHeight="34.0" prefWidth="244.0" text="p3" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="M3" alignment="CENTER" contentDisplay="RIGHT" layoutX="866.0" layoutY="663.0" prefHeight="34.0" prefWidth="244.0" text="Modifier" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="518.0" layoutY="59.0" prefHeight="62.0" prefWidth="300.0" text="Tous Les Articles" textFill="#d8740f">
+               <font>
+                  <Font name="Cambria" size="40.0" />
+               </font>
+            </Label>
+            <Label fx:id="P3" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="870.0" layoutY="448.0" prefHeight="34.0" prefWidth="244.0" text="pri3" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -142,12 +136,69 @@
                   </ImageView>
                </graphic>
             </Label>
+            <Label fx:id="P2" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="550.0" layoutY="448.0" prefHeight="34.0" prefWidth="244.0" text="pri2" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/coin.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label fx:id="P1" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="225.0" layoutY="448.0" prefHeight="34.0" prefWidth="244.0" text="pri1" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/coin.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <ImageView fx:id="S1" fitHeight="50.0" fitWidth="289.0" layoutX="200.0" layoutY="711.0" pickOnBounds="true">
+               <image>
+                  <Image url="@images/Sbouton.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="S3" fitHeight="50.0" fitWidth="289.0" layoutX="845.0" layoutY="711.0" pickOnBounds="true">
+               <image>
+                  <Image url="@images/Sbouton.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="S2" fitHeight="50.0" fitWidth="289.0" layoutX="525.0" layoutY="711.0" pickOnBounds="true">
+               <image>
+                  <Image url="@images/Sbouton.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="S11" alignment="CENTER" contentDisplay="RIGHT" layoutX="223.0" layoutY="719.0" prefHeight="34.0" prefWidth="244.0" text="Supprimer" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+            <Label fx:id="S31" alignment="CENTER" contentDisplay="RIGHT" layoutX="868.0" layoutY="719.0" prefHeight="34.0" prefWidth="244.0" text="Supprimer" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="S21" alignment="CENTER" contentDisplay="RIGHT" layoutX="554.0" layoutY="719.0" prefHeight="34.0" prefWidth="244.0" text="Supprimer" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
          </children></Pane>
       <Pane blendMode="SRC_ATOP" prefHeight="159.0" prefWidth="1335.0">
          <children>
             <ImageView fitHeight="300.0" fitWidth="1335.0" layoutY="-46.0" pickOnBounds="true" rotate="180.0">
                <image>
-                  <Image url="@images/footer-bg.png" />
+                  <Image url="@images/fB.png" />
                </image>
             </ImageView>
             <HBox layoutY="14.0" prefHeight="69.0" prefWidth="1335.0">
@@ -156,13 +207,13 @@
                      <children>
                         <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/accueil.png" />
+                              <Image url="@images/Baccueil.png" />
                            </image>
                            <HBox.margin>
                               <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="42.0" prefWidth="113.0" text="Acceuil">
+                        <Label prefHeight="42.0" prefWidth="113.0" text="Acceuil" textFill="#d8740f">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -173,13 +224,13 @@
                      <children>
                         <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/rec.png" />
+                              <Image url="@images/Brec.png" />
                            </image>
                            <HBox.margin>
                               <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="42.0" prefWidth="113.0" text="Réclamation">
+                        <Label prefHeight="42.0" prefWidth="113.0" text="Réclamation" textFill="#d8740f">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -190,13 +241,13 @@
                      <children>
                         <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/trophee.png" />
+                              <Image url="@images/Btrophee.png" />
                            </image>
                            <HBox.margin>
                               <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="42.0" prefWidth="74.0" text="Trophées">
+                        <Label prefHeight="42.0" prefWidth="74.0" text="Trophées" textFill="#d8740f">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -207,13 +258,13 @@
                      <children>
                         <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/tournoi.png" />
+                              <Image url="@images/Btournoi.png" />
                            </image>
                            <HBox.margin>
                               <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="42.0" prefWidth="75.0" text="Tournois">
+                        <Label prefHeight="42.0" prefWidth="75.0" text="Tournois" textFill="#d8740f">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -224,13 +275,13 @@
                      <children>
                         <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/game.png" />
+                              <Image url="@images/Bgame.png" />
                            </image>
                            <HBox.margin>
                               <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="42.0" prefWidth="54.0" text="Jeux">
+                        <Label prefHeight="42.0" prefWidth="54.0" text="Jeux" textFill="#d8740f">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -241,14 +292,14 @@
                      <children>
                         <Pane onMouseClicked="#navbout">
                            <children>
-                              <Label layoutX="49.0" prefHeight="42.0" prefWidth="84.0" text="Boutique">
+                              <Label layoutX="49.0" prefHeight="42.0" prefWidth="84.0" text="Boutique" textFill="#d8740f">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>
                               </Label>
                               <ImageView fitHeight="37.0" fitWidth="34.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@images/article.png" />
+                                    <Image url="@images/Barticle.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
@@ -262,13 +313,13 @@
                      <children>
                         <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/user.png" />
+                              <Image url="@images/Buser.png" />
                            </image>
                            <HBox.margin>
                               <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="42.0" prefWidth="127.0" text="Profil">
+                        <Label prefHeight="42.0" prefWidth="127.0" text="Profil" textFill="#d8740f">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -277,16 +328,20 @@
                   </HBox>
                </children>
             </HBox>
-            <StackPane fx:id="pan" layoutX="1188.0" layoutY="86.0">
-               <children>
-                  <ImageView fitHeight="37.0" fitWidth="34.0" layoutX="1188.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/panier.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="numA" alignment="BOTTOM_CENTER" prefHeight="32.0" prefWidth="29.0" text="+" />
-               </children>
-            </StackPane>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d8740f" height="7.0" layoutY="71.0" stroke="BLACK" strokeType="INSIDE" width="1335.0" />
+            <ImageView fx:id="Aj1" fitHeight="50.0" fitWidth="289.0" layoutX="1010.0" layoutY="135.0" onMouseClicked="#ajouter" pickOnBounds="true">
+               <image>
+                  <Image url="@images/add.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Aj" alignment="CENTER" contentDisplay="RIGHT" layoutX="1031.0" layoutY="143.0" onMouseClicked="#ajouter" prefHeight="34.0" prefWidth="244.0" text="Ajouter" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
          </children>
       </Pane>
    </children>

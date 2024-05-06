@@ -4,11 +4,13 @@ package services;
 import edu.esprit.entities.Article;
 import edu.esprit.tools.MyConnection;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
+
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import java.io.ByteArrayOutputStream;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -25,27 +27,56 @@ public class ArticleService implements IService<Article> {
         connection = MyConnection.getInstance().getCnx();
     }
 
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
     @Override
-    public void ajouter(Article article) {
+    public int ajouter(Article article) throws SQLException {
         String query = "INSERT INTO article (article_id,nom, description, prix,type_id, image) VALUES (?,?,?, ?, ?, ?)";
+        if (this.articleUnique(article.getIdA())){
+            showAlert("Erreur", "La réference choisie est déja utilisée.");
+            return 1;
+        }else {
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setInt(1, article.getIdA());
+                preparedStatement.setString(2, article.getNom());
+                preparedStatement.setString(3, article.getDescription());
+                preparedStatement.setString(4, article.getPrix());
+                preparedStatement.setInt(5, article.getType().getId());
+                String img;
+                String url = article.getUrl();
+                url = replaS(url);
 
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, article.getIdA());
-            preparedStatement.setString(2, article.getNom());
-            preparedStatement.setString(3, article.getDescription());
-            preparedStatement.setString(4, article.getPrix());
-            preparedStatement.setInt(5, article.getType().getId());
-            BufferedImage bufferedImage = SwingFXUtils.fromFXImage(article.getImage(), null);
-            ByteArrayOutputStream BI = new ByteArrayOutputStream();
-            ImageIO.write(bufferedImage, "png", BI);
-            byte[] img = BI.toByteArray();
-            preparedStatement.setBytes(6, img);
-            preparedStatement.executeUpdate();
-            System.out.println("Article ajoutée !");
-        } catch (SQLException | IOException e) {
-            System.out.println(e.getMessage());
+                String local = url.substring(0, url.lastIndexOf('/') + 1);
+                String lastPart = url.substring(url.lastIndexOf("/") + 1);
+                if (!local.equals("http://localhost/images/")) {
+                    File file = new File("C:/wamp64/www/images/", lastPart);
+                    if (!(file.exists() && file.isFile())) {
+                        try {
+                            BufferedImage bufferedImage = SwingFXUtils.fromFXImage(article.getImage(), null);
+                            ImageIO.write(bufferedImage, "png", file);
+                        } catch (IOException e) {
+                            System.err.println("Error saving image: " + e.getMessage());
+                        }
+                    }
+                }
+                img = lastPart;
+                preparedStatement.setString(6, img);
+                preparedStatement.executeUpdate();
+                System.out.println("Article ajoutée !");
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+            return 0;
         }
+    }
+    public static String replaS(String i) {
+        return i.replace("\\", "/");
     }
     @Override
     public void modifier(Article article) throws SQLException, IOException {
@@ -56,11 +87,25 @@ public class ArticleService implements IService<Article> {
         preparedStatement.setString(3, article.getDescription());
         preparedStatement.setString(4, article.getPrix());
         preparedStatement.setInt(5, article.getType().getId());
-        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(article.getImage(), null);
-        ByteArrayOutputStream BI = new ByteArrayOutputStream();
-        ImageIO.write(bufferedImage, "png", BI);
-        byte[] img = BI.toByteArray();
-        preparedStatement.setBytes(6, img);
+        String img ;
+        String url = article.getUrl();
+        url= replaS(url);
+
+        String local = url.substring(0,url.lastIndexOf('/')+1 );
+        String lastPart = url.substring(url.lastIndexOf("/") + 1);
+        if (!local.equals("http://localhost/images/")){
+            File file = new File("C:/wamp64/www/images/", lastPart);
+            if (!(file.exists() && file.isFile())) {
+                try {
+                    BufferedImage bufferedImage = SwingFXUtils.fromFXImage(article.getImage(), null);
+                    ImageIO.write(bufferedImage, "png", file);
+                } catch (IOException e) {
+                    System.err.println("Error saving image: " + e.getMessage());
+                }
+            }
+        }
+        img=lastPart;
+        preparedStatement.setString(6, img);
         preparedStatement.setInt(7, article.getId());
         preparedStatement.executeUpdate();
     }
@@ -212,6 +257,19 @@ public class ArticleService implements IService<Article> {
         return false;
     }
 
+    public boolean articleUnique(int articleId) throws SQLException {
+        String query = "SELECT COUNT(*) FROM article WHERE article_id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, articleId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        }
+        return false;
+    }
     public int articleCount() throws SQLException {
         String query = "SELECT COUNT(*) FROM article";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {

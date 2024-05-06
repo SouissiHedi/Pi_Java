@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="891.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutY="67.0" prefHeight="829.0" prefWidth="1335.0" style="-fx-background-color: #191c24;" />
+      <Pane blendMode="SRC_ATOP" prefHeight="159.0" prefWidth="1335.0">
+         <children>
+            <ImageView fitHeight="300.0" fitWidth="1335.0" layoutY="-46.0" pickOnBounds="true" rotate="180.0">
+               <image>
+                  <Image url="@images/fB.png" />
+               </image>
+            </ImageView>
+            <HBox layoutY="14.0" prefHeight="69.0" prefWidth="1335.0">
+               <children>
+                  <HBox fx:id="homeNav" onMouseClicked="#navhome" prefHeight="69.0" prefWidth="134.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Baccueil.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="113.0" text="Acceuil" textFill="#d8740f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navrec" prefHeight="69.0" prefWidth="160.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Brec.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="113.0" text="Réclamation" textFill="#d8740f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navtroph" prefHeight="69.0" prefWidth="134.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Btrophee.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="74.0" text="Trophées" textFill="#d8740f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navtour" prefHeight="69.0" prefWidth="145.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Btournoi.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="75.0" text="Tournois" textFill="#d8740f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navjeu" prefHeight="69.0" prefWidth="115.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Bgame.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="54.0" text="Jeux" textFill="#d8740f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="69.0" prefWidth="490.0" spacing="10.0">
+                     <children>
+                        <Pane onMouseClicked="#navbout">
+                           <children>
+                              <Label layoutX="49.0" prefHeight="42.0" prefWidth="84.0" text="Boutique" textFill="#d8740f">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="37.0" fitWidth="34.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/Barticle.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="69.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Buser.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="127.0" text="Profil" textFill="#d8740f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d8740f" height="7.0" layoutY="81.0" stroke="BLACK" strokeType="INSIDE" width="1335.0" />
+      <Pane layoutX="168.0" layoutY="89.0" prefHeight="782.0" prefWidth="1082.0">
+         <children>
+            <Text fx:id="title" fill="#d8740f" layoutX="408.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier un Article" textAlignment="CENTER" wrappingWidth="266.74609375">
+               <font>
+                  <Font name="System Bold Italic" size="28.0" />
+               </font>
+            </Text>
+            <ComboBox fx:id="type" layoutX="143.0" layoutY="489.0" prefHeight="44.0" prefWidth="245.0" promptText="type" style="-fx-background-color: #d8740f;">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Moyenne" />
+                     <String fx:value="Bonne" />
+                  </FXCollections>
+               </items>
+               <styleClass>
+                  <String fx:value="round-layout" />
+                  <String fx:value="transparent" />
+                  <String fx:value="text-field-black-border" />
+               </styleClass>
+            </ComboBox>
+            <TextField fx:id="prix" layoutX="140.0" layoutY="359.0" prefHeight="44.0" prefWidth="245.0" promptText="prix">
+               <styleClass>
+                  <String fx:value="round-layout" />
+                  <String fx:value="transparent" />
+                  <String fx:value="text-field-black-border" />
+               </styleClass>
+            </TextField>
+            <Label fx:id="Xprix" layoutX="143.0" layoutY="403.0" prefHeight="21.0" prefWidth="601.0" text="Le prix ne peut pas être vide et ne contient que des chiffres. L'entrée doit être positive." textFill="RED" />
+            <Label fx:id="Xtype" layoutX="143.0" layoutY="533.0" prefHeight="17.0" prefWidth="356.0" text="Veuillez sélectionner un type" textFill="RED" />
+            <Label fx:id="P" layoutX="99.0" layoutY="369.0" text="Prix" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="T" layoutX="89.0" layoutY="499.0" prefHeight="25.0" prefWidth="46.0" text="Type" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="D" layoutX="42.0" layoutY="299.0" prefHeight="25.0" prefWidth="91.0" text="Description" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="Xdesc" layoutX="143.0" layoutY="333.0" prefHeight="21.0" prefWidth="562.0" text="La description ne peut pas être vide et contenir moins de 10 caractères." textFill="RED" />
+            <TextField fx:id="desc" layoutX="140.0" layoutY="289.0" prefHeight="44.0" prefWidth="245.0" promptText="description">
+               <styleClass>
+                  <String fx:value="round-layout" />
+                  <String fx:value="transparent" />
+                  <String fx:value="text-field-black-border" />
+               </styleClass>
+            </TextField>
+            <TextField fx:id="id" layoutX="140.0" layoutY="154.0" prefHeight="44.0" prefWidth="245.0" promptText="référence">
+               <styleClass>
+                  <String fx:value="round-layout" />
+                  <String fx:value="transparent" />
+                  <String fx:value="text-field-black-border" />
+               </styleClass>
+            </TextField>
+            <Label fx:id="Xid" layoutX="143.0" layoutY="198.0" prefHeight="21.0" prefWidth="573.0" text="L'id ne peut pas être vide (chiffres uniquement)." textFill="RED" />
+            <Label fx:id="I" layoutX="53.0" layoutY="164.0" prefHeight="25.0" prefWidth="75.0" text="Reference" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="N" layoutX="87.0" layoutY="234.0" text="Nom" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="Xnom" layoutX="143.0" layoutY="268.0" prefHeight="21.0" prefWidth="562.0" text="Le nom ne peut pas être vide et contenir moins de 8 caractères." textFill="RED" />
+            <TextField fx:id="nom" layoutX="140.0" layoutY="224.0" prefHeight="44.0" prefWidth="245.0" promptText="nom">
+               <styleClass>
+                  <String fx:value="round-layout" />
+                  <String fx:value="transparent" />
+                  <String fx:value="text-field-black-border" />
+               </styleClass>
+            </TextField>
+            <Label fx:id="Im" layoutX="83.0" layoutY="433.0" text="Image" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="Ximage" layoutX="143.0" layoutY="465.0" prefHeight="21.0" prefWidth="669.0" text="Veuillez choisir une image" textFill="RED" />
+            <Button fx:id="upload" layoutX="143.0" layoutY="425.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="356.0" style="-fx-background-color: #d8740f;" text="Upload">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="preview" fitHeight="425.0" fitWidth="441.0" layoutX="598.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="478.0" layoutY="626.0" mnemonicParsing="false" onMouseClicked="#modifier" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: #ffa700;" text="Modifier" />
+            <Button layoutX="478.0" layoutY="684.0" mnemonicParsing="false" onMouseClicked="#getback" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: #7e7b7b;" text="Retour" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

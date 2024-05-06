@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -39,6 +40,9 @@ public class ArticleController {
     @FXML
     private Label N;
 
+    @FXML
+    private Label R;
+
 
     public ArticleController(String name) throws SQLException {
         setName(name);
@@ -51,6 +55,7 @@ public class ArticleController {
         I.setImage(a.getImage());
         L.setText(a.getPrix());
         T.setText(a.getType().getNomCat());
+        R.setText(Integer.toString(a.getIdA()));
         D.setText(a.getDescription());
     }
 
@@ -82,6 +87,18 @@ public class ArticleController {
     @FXML
     void navbout(MouseEvent mouseEvent) {
         redirect("/template.fxml",mouseEvent);
+    }
+
+    @FXML
+    void achat(MouseEvent mouseEvent) {
+        //ajouter l'article dans l'inventaire et decrementer la monnaie
+    }
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     public void redirect(String s,MouseEvent mouseEvent){

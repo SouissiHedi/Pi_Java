@@ -151,7 +151,7 @@
          </children></Pane>
       <Pane layoutX="170.0" layoutY="202.0" prefHeight="619.0" prefWidth="995.0" style="-fx-background-color: rgba(255, 255, 255, 0.6);">
          <children>
-            <Label blendMode="SRC_ATOP" layoutX="546.0" layoutY="180.0" prefHeight="34.0" prefWidth="67.0" text="Nom :">
+            <Label blendMode="SRC_ATOP" layoutX="496.0" layoutY="185.0" prefHeight="34.0" prefWidth="115.0" text="Reference :">
                <font>
                   <Font size="23.0" />
                </font>
@@ -161,33 +161,46 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label blendMode="SRC_ATOP" layoutX="549.0" layoutY="285.0" prefHeight="34.0" prefWidth="61.0" text="Type :">
+            <Label blendMode="SRC_ATOP" layoutX="549.0" layoutY="291.0" prefHeight="34.0" prefWidth="61.0" text="Type :">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label blendMode="SRC_ATOP" layoutX="560.0" layoutY="233.0" prefHeight="34.0" prefWidth="54.0" text="Prix :">
+            <Label blendMode="SRC_ATOP" layoutX="560.0" layoutY="241.0" prefHeight="34.0" prefWidth="54.0" text="Prix :">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
             <ImageView fx:id="I" blendMode="SRC_ATOP" fitHeight="387.0" fitWidth="413.0" layoutX="47.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="N" blendMode="SRC_ATOP" layoutX="634.0" layoutY="176.0" prefHeight="42.0" prefWidth="326.0" text="Label">
+            <Label fx:id="N" alignment="CENTER" blendMode="SRC_ATOP" layoutX="335.0" layoutY="25.0" prefHeight="42.0" prefWidth="326.0" text="Label" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font></Label>
+            <Label fx:id="L" alignment="CENTER_RIGHT" blendMode="SRC_ATOP" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="634.0" layoutY="237.0" prefHeight="42.0" prefWidth="326.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/coin.png" />
+                     </image></ImageView>
+               </graphic></Label>
+            <Label fx:id="T" alignment="CENTER_RIGHT" blendMode="SRC_ATOP" layoutX="634.0" layoutY="287.0" prefHeight="42.0" prefWidth="326.0" text="Label">
                <font>
                   <Font size="20.0" />
                </font></Label>
-            <Label fx:id="L" blendMode="SRC_ATOP" layoutX="634.0" layoutY="229.0" prefHeight="42.0" prefWidth="326.0" text="Label">
+            <Label fx:id="D" alignment="TOP_RIGHT" blendMode="SRC_ATOP" layoutX="634.0" layoutY="360.0" prefHeight="139.0" prefWidth="326.0" text="effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font></Label>
-            <Label fx:id="T" blendMode="SRC_ATOP" layoutX="634.0" layoutY="281.0" prefHeight="42.0" prefWidth="326.0" text="Label">
+            <Button layoutX="517.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#achat" prefHeight="42.0" prefWidth="126.0" style="-fx-background-color: #23c223;" text="Acheter" />
+            <Button layoutX="734.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#navbout" prefHeight="42.0" prefWidth="126.0" style="-fx-background-color: #969191;" text="Retour" />
+            <Label fx:id="R" alignment="CENTER_RIGHT" blendMode="SRC_ATOP" layoutX="634.0" layoutY="184.0" prefHeight="42.0" prefWidth="326.0" text="Label">
                <font>
                   <Font size="20.0" />
-               </font></Label>
-            <Label fx:id="D" alignment="TOP_LEFT" blendMode="SRC_ATOP" layoutX="634.0" layoutY="360.0" prefHeight="139.0" prefWidth="326.0" text="Label" wrapText="true">
-               <font>
-                  <Font size="20.0" />
-               </font></Label>
+               </font>
+            </Label>
          </children></Pane>
    </children>
 </AnchorPane>

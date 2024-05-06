@@ -11,6 +11,8 @@ public class Article {
     public String description;
     public CategoryArticle type;
     public Image image;
+    public String url;
+
 
     public Article() {
     }
@@ -85,6 +87,14 @@ public class Article {
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override

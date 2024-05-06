@@ -92,11 +92,11 @@ public class AjouterArticleController {
     private Label P;
 
     @FXML
-    private Label Xid;
-
+    private Label T;
 
     @FXML
-    private Label T;
+    private Label Xid;
+
 
     @FXML
     private TextField id;

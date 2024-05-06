@@ -19,7 +19,7 @@ public class CategotyArticleService implements IService<CategoryArticle> {
     }
 
     @Override
-    public void ajouter(CategoryArticle categoryArticle) throws SQLException {
+    public int ajouter(CategoryArticle categoryArticle) throws SQLException {
         String query = "INSERT INTO category_article (nom_cat) VALUES (?)";
 
         try {
@@ -30,6 +30,7 @@ public class CategotyArticleService implements IService<CategoryArticle> {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return 0;
     }
     @Override
     public void modifier(CategoryArticle categoryArticle) throws SQLException {

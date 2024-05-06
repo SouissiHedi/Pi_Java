@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: transparent; -fx-background-radius: 20;">
+    <VBox prefHeight="600" prefWidth="300" style="-fx-background-color: white; -fx-background-radius: 20;">
+        <!-- Your cart content here -->
+        <Label style="-fx-font-size: 18pt;" text="Your Cart" />
+        <Label text="Item 1: $10" />
+        <Label text="Item 2: $20" />
+        <Label text="Item 3: $15" />
+        <Button text="Checkout" />
+    </VBox>
+</StackPane>
