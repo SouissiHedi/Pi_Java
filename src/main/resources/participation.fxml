@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="891.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="891.0" fitWidth="1335.0" opacity="0.29" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/med.jpg" />
+         </image>
+      </ImageView>
+      <Pane blendMode="SRC_ATOP" prefHeight="159.0" prefWidth="1335.0">
+         <children>
+            <ImageView fitHeight="300.0" fitWidth="1335.0" layoutY="-46.0" pickOnBounds="true" rotate="180.0">
+               <image>
+                  <Image url="@images/footer-bg.png" />
+               </image>
+            </ImageView>
+            <HBox layoutY="14.0" prefHeight="69.0" prefWidth="1335.0">
+               <children>
+                  <HBox fx:id="homeNav" onMouseClicked="#navhome" prefHeight="69.0" prefWidth="134.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/accueil.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="113.0" text="Acceuil">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navrec" prefHeight="69.0" prefWidth="160.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/rec.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="113.0" text="Réclamation">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navtroph" prefHeight="69.0" prefWidth="134.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/trophee.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="74.0" text="Trophées">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navtour" prefHeight="69.0" prefWidth="145.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/tournoi.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="75.0" text="Tournois">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navjeu" prefHeight="69.0" prefWidth="115.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/game.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="54.0" text="Jeux">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="69.0" prefWidth="490.0" spacing="10.0">
+                     <children>
+                        <Pane onMouseClicked="#navbout">
+                           <children>
+                              <Label layoutX="49.0" prefHeight="42.0" prefWidth="84.0" text="Boutique">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="37.0" fitWidth="34.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/article.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="69.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/user.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="127.0" text="Profil">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Label fx:id="d2" layoutX="196.0" layoutY="261.0" prefHeight="35.0" prefWidth="133.0" text="Réference :">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="d3" layoutX="197.0" layoutY="313.0" prefHeight="35.0" prefWidth="62.0" text="Jeu :">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="d4" layoutX="197.0" layoutY="371.0" prefHeight="25.0" prefWidth="87.0" text="Type :">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="I" fitHeight="203.0" fitWidth="240.0" layoutX="176.0" layoutY="499.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="R" layoutX="356.0" layoutY="262.0" prefHeight="34.0" prefWidth="75.0" text="ref" />
+      <Label fx:id="J" layoutX="356.0" layoutY="320.0" text="jeu" />
+      <Label fx:id="d1" layoutX="196.0" layoutY="421.0" text="Date :">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="T" layoutX="351.0" layoutY="378.0" text="type" />
+      <Label fx:id="D" layoutX="351.0" layoutY="433.0" text="date" />
+      <Button layoutX="527.0" layoutY="570.0" mnemonicParsing="false" onMouseClicked="#Retour" text="Retour" />
+   </children>
+</AnchorPane>
