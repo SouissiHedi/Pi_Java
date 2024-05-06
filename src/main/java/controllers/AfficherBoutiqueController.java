@@ -205,19 +205,22 @@ public class AfficherBoutiqueController {
         pan.setOnMouseClicked(event -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/panier.fxml"));
+
+                PanierController controller = new PanierController();
+                loader.setController(controller);
+
                 Parent root = loader.load();
                 Stage panStage = new Stage();
-
                 // Create the rectangular clip to round the corners
                 javafx.scene.shape.Rectangle rect = new Rectangle(1024, 768);
                 rect.setArcHeight(60.0);
                 rect.setArcWidth(60.0);
 
                 // Create the scene
-                Scene scene = new Scene(root, 300, 400);
+                Scene scene = new Scene(root, 300, 500);
                 panStage.initStyle(StageStyle.TRANSPARENT);
                 scene.setFill(Color.TRANSPARENT);
-                panStage.setTitle("Hello World!");
+                panStage.setTitle("Panier");
                 panStage.setScene(scene);
                 panStage.showAndWait();
             } catch (Exception e) {

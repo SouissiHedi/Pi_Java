@@ -1,17 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 
-<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: transparent; -fx-background-radius: 20;">
-    <VBox prefHeight="600" prefWidth="300" style="-fx-background-color: white; -fx-background-radius: 20;">
-        <!-- Your cart content here -->
-        <Label style="-fx-font-size: 18pt;" text="Your Cart" />
-        <Label text="Item 1: $10" />
-        <Label text="Item 2: $20" />
-        <Label text="Item 3: $15" />
-        <Button text="Checkout" />
-    </VBox>
+<StackPane style="-fx-background-color: transparent; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+       <VBox prefHeight="500.0" prefWidth="300" style="-fx-background-color: #019ef3; -fx-background-radius: 20;">
+          <children>
+            <Pane prefHeight="500.0" prefWidth="300.0">
+               <children>
+                    <!-- Your cart content here -->
+                    <Label layoutX="85.0" layoutY="25.0" style="-fx-font-size: 18pt; -fx-text-fill: white;" text="Votre Panier">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                    <Button fx:id="BY" layoutX="56.0" layoutY="459.0" text="Achat" />
+                  <Button fx:id="BK" layoutX="183.0" layoutY="459.0" text="Retour" />
+                  <ScrollPane blendMode="SRC_ATOP" fitToWidth="true" layoutX="18.0" layoutY="78.0" prefHeight="372.0" prefViewportHeight="451.0" prefViewportWidth="265.0" prefWidth="267.0" style="-fx-background-color: transparent; -fx-background-radius: 20;">
+                     <content>
+                        <VBox alignment="TOP_CENTER" blendMode="SRC_ATOP" layoutX="18.0" layoutY="78.0" prefHeight="370.0" prefWidth="186.0" style="-fx-background-color: lightblue; -fx-background-insets: 0; -fx-background-radius: 20;">
+                           <children>
+                                <Label text="Item 1: $10" />
+                                <Label text="Item 2: $20" />
+                                <Label text="Item 3: $15" />
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+          </children>
+       </VBox>
+   </children>
 </StackPane>
