@@ -1,6 +1,8 @@
 package edu.esprit.services;
 
 import edu.esprit.entities.Article;
+import edu.esprit.entities.Jeu;
+import edu.esprit.entities.Tournoi;
 import edu.esprit.tools.MyConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +16,7 @@ import java.io.InputStreamReader;
 
 public class ArticleCrud implements ICrud<Article>{
     @Override
-    public void ajouter(Article article) throws SQLException {
+    public int ajouter(Article article) throws SQLException {
         String req1="INSERT INTO article(nom,prix) VALUES ('"+article.getNom()+"','"+article.getPrix()+"')";
         try {
             Statement st = MyConnection.getInstance().getCnx().createStatement();
@@ -23,10 +25,11 @@ public class ArticleCrud implements ICrud<Article>{
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return 0;
     }
 
     @Override
-    public void ajouter2(Article article) throws SQLException {
+    public int ajouter2(Article article) throws SQLException {
         String req1="INSERT INTO article(nom,prix) VALUES (?,?)";
         try {
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(req1);
@@ -37,6 +40,7 @@ public class ArticleCrud implements ICrud<Article>{
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return 0;
     }
 
     @Override
@@ -109,5 +113,40 @@ public class ArticleCrud implements ICrud<Article>{
             System.out.println(e.getMessage());
         }
         return articles;
+    }
+
+    @Override
+    public Article getOneById(int id) {
+        return null;
+    }
+
+    @Override
+    public Jeu getOneByName(String nom) {
+        return null;
+    }
+
+    @Override
+    public Article recuperer(int i) throws SQLException, IOException {
+        return null;
+    }
+
+    @Override
+    public Article recuperer(String i) throws SQLException, IOException {
+        return null;
+    }
+
+    @Override
+    public List<String> recupererId() throws SQLException, IOException {
+        return null;
+    }
+
+    @Override
+    public void supprimer(int id) throws SQLException {
+
+    }
+
+    @Override
+    public Tournoi recupererType(String i) throws SQLException, IOException {
+        return null;
     }
 }

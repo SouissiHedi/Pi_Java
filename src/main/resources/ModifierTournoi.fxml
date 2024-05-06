@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="891.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="907.0" fitWidth="1341.0" opacity="0.26">
+         <image>
+            <Image url="@images/med.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutY="80.0" prefHeight="827.0" prefWidth="1335.0">
+         <children>
+            <Button fx:id="enreg" layoutX="569.0" layoutY="576.0" mnemonicParsing="false" onMouseClicked="#modifier" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: #79b6d7;" text="Modifier" textFill="#01141b" />
+            <ComboBox fx:id="jeu" layoutX="312.0" layoutY="202.0" prefHeight="44.0" prefWidth="245.0" promptText="Jeu">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Moyenne" />
+                     <String fx:value="Bonne" />
+                  </FXCollections>
+               </items>
+               <styleClass>
+                  <String fx:value="round-layout" />
+                  <String fx:value="transparent" />
+                  <String fx:value="text-field-black-border" />
+               </styleClass>
+            </ComboBox>
+            <DatePicker fx:id="date" layoutX="312.0" layoutY="429.0" />
+            <TextField fx:id="type" layoutX="312.0" layoutY="320.0" prefHeight="44.0" prefWidth="245.0" promptText="type">
+               <styleClass>
+                  <String fx:value="round-layout" />
+                  <String fx:value="transparent" />
+                  <String fx:value="text-field-black-border" />
+               </styleClass>
+            </TextField>
+            <Label fx:id="datecontroller" layoutX="312.0" layoutY="488.0" text="Veuillez saisir la date" textFill="#f80303" />
+            <Label fx:id="typecontrolleur" layoutX="312.0" layoutY="385.0" prefHeight="17.0" prefWidth="356.0" text="Le type doit contenir uniquement des caratères" textFill="RED" />
+            <Label fx:id="jeucontroller" layoutX="312.0" layoutY="269.0" prefHeight="17.0" prefWidth="356.0" text="Veuillez sélectionner un jeu" textFill="RED" />
+            <Label fx:id="d2" layoutX="216.0" layoutY="211.0" prefHeight="25.0" prefWidth="46.0" text="Jeu">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="d3" layoutX="215.0" layoutY="330.0" prefHeight="25.0" prefWidth="46.0" text="Type">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="d4" layoutX="218.0" layoutY="432.0" prefHeight="25.0" prefWidth="87.0" text="Date">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button layoutX="745.0" layoutY="576.0" mnemonicParsing="false" onMouseClicked="#Retour" prefHeight="44.0" prefWidth="126.0" text="Retour" />
+         </children></Pane>
+      <Pane blendMode="SRC_ATOP" prefHeight="159.0" prefWidth="1335.0">
+         <children>
+            <ImageView fitHeight="300.0" fitWidth="1335.0" layoutY="-46.0" pickOnBounds="true" rotate="180.0">
+               <image>
+                  <Image url="@images/footer-bg.png" />
+               </image>
+            </ImageView>
+            <HBox layoutY="14.0" prefHeight="69.0" prefWidth="1335.0">
+               <children>
+                  <HBox fx:id="homeNav" onMouseClicked="#navhome" prefHeight="69.0" prefWidth="134.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/accueil.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="113.0" text="Acceuil">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navrec" prefHeight="69.0" prefWidth="160.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/rec.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="113.0" text="Réclamation">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navtroph" prefHeight="69.0" prefWidth="134.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/trophee.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="74.0" text="Trophées">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navtour" prefHeight="69.0" prefWidth="145.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/tournoi.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="75.0" text="Tournois">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navjeu" prefHeight="69.0" prefWidth="115.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/game.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="54.0" text="Jeux">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="69.0" prefWidth="490.0" spacing="10.0">
+                     <children>
+                        <Pane onMouseClicked="#navbout">
+                           <children>
+                              <Label layoutX="49.0" prefHeight="42.0" prefWidth="84.0" text="Boutique">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="37.0" fitWidth="34.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/article.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="69.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/user.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="127.0" text="Profil">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <TextField fx:id="id" layoutX="306.0" layoutY="180.0" prefHeight="44.0" prefWidth="245.0" promptText="réference">
+               <styleClass>
+                  <String fx:value="round-layout" />
+                  <String fx:value="transparent" />
+                  <String fx:value="text-field-black-border" />
+               </styleClass>
+            </TextField>
+            <Label fx:id="idcontroller" layoutX="311.0" layoutY="241.0" prefHeight="17.0" prefWidth="356.0" text="Le Tournoi_id doit contenir uniquement des chiffres" textFill="RED" />
+            <Label fx:id="d1" layoutX="191.0" layoutY="186.0" text="Réference">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Text fx:id="title" fill="#0d3618" layoutX="306.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Tournoi" wrappingWidth="268.74609375">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -5,18 +5,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MyConnection {
-    private String URL="jdbc:mysql://localhost:3306/pij";
-    private String USER="root";
-    private String PWD="";
+    private static String URL = "jdbc:mysql://localhost:3306/pi";
+    private static String USER = "root";
+    private static String PWD = "";
+    private static MyConnection instance;
+    private Connection cnx;
 
-Connection cnx;
-    public static MyConnection instance;
     private MyConnection() throws SQLException {
         try {
-            cnx = DriverManager.getConnection(URL,USER,PWD);
+            cnx = DriverManager.getConnection(URL, USER, PWD);
             System.out.println("Connexion établie !");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error establishing connection", e);
         }
     }
 
@@ -24,14 +24,17 @@ Connection cnx;
         return cnx;
     }
 
-    public void setCnx(Connection cnx) {
-        this.cnx = cnx;
-    }
-
-    public static MyConnection getInstance() throws SQLException {
-        if(instance==null){
-            instance=new MyConnection();
+    public static synchronized MyConnection getInstance() throws SQLException {
+        if (instance == null || instance.getCnx().isClosed()) {
+            instance = new MyConnection();
         }
         return instance;
+    }
+
+    public static void reconnect() throws SQLException {
+        if (instance != null && !instance.getCnx().isClosed()) {
+            instance.getCnx().close();
+        }
+        instance = new MyConnection();
     }
 }

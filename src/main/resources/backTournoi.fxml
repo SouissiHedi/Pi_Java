@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="891.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GererTournoi">
+   <children>
+      <ImageView fitHeight="891.0" fitWidth="1335.0" opacity="0.29" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/med.jpg" />
+         </image>
+      </ImageView>
+      <Pane blendMode="SRC_ATOP" prefHeight="159.0" prefWidth="1335.0">
+         <children>
+            <ImageView fitHeight="300.0" fitWidth="1335.0" layoutY="-46.0" pickOnBounds="true" rotate="180.0">
+               <image>
+                  <Image url="@images/footer-bg.png" />
+               </image>
+            </ImageView>
+            <HBox layoutY="14.0" prefHeight="69.0" prefWidth="1335.0">
+               <children>
+                  <HBox fx:id="homeNav" onMouseClicked="#navhome" prefHeight="69.0" prefWidth="134.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/accueil.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="113.0" text="Acceuil">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navrec" prefHeight="69.0" prefWidth="160.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/rec.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="113.0" text="Réclamation">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navtroph" prefHeight="69.0" prefWidth="134.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/trophee.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="74.0" text="Trophées">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navtour" prefHeight="69.0" prefWidth="145.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/tournoi.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="75.0" text="Tournois">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox onMouseClicked="#navjeu" prefHeight="69.0" prefWidth="115.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/game.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="54.0" text="Jeux">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="69.0" prefWidth="490.0" spacing="10.0">
+                     <children>
+                        <Pane onMouseClicked="#navbout">
+                           <children>
+                              <Label layoutX="49.0" prefHeight="42.0" prefWidth="84.0" text="Boutique">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="37.0" fitWidth="34.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/article.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="69.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/user.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="42.0" prefWidth="127.0" text="Profil">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Text fx:id="title" fill="#0d3618" layoutX="552.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gérer Tournois" wrappingWidth="346.74609375">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <GridPane layoutX="32.0" layoutY="243.0" prefHeight="591.0" prefWidth="1276.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="425.0" minWidth="425.0" prefWidth="425.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="425.0" minWidth="425.0" prefWidth="425.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="426.0" minWidth="425.0" prefWidth="425.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="295.0" minHeight="295.0" prefHeight="295.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="296.0" minHeight="296.0" prefHeight="296.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="i1" fitHeight="200.0" fitWidth="200.0" layoutX="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="n1" alignment="CENTER" layoutX="142.0" layoutY="200.0" prefHeight="21.0" prefWidth="115.0" text="NomTournoi" textAlignment="CENTER" />
+                  <Button fx:id="supp1" layoutX="47.0" layoutY="238.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="126.0" text="supprimer">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="mod1" layoutX="248.0" layoutY="239.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="126.0" text="modifier">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <Label fx:id="n2" alignment="CENTER" layoutX="155.0" layoutY="200.0" prefHeight="21.0" prefWidth="115.0" text="NomTournoi" textAlignment="CENTER" />
+                  <ImageView fx:id="i2" fitHeight="200.0" fitWidth="200.0" layoutX="113.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="supp2" layoutX="37.0" layoutY="241.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="126.0" text="supprimer">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="mod2" layoutX="257.0" layoutY="241.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="126.0" text="modifier">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <Label fx:id="n3" alignment="CENTER" layoutX="156.0" layoutY="200.0" prefHeight="21.0" prefWidth="115.0" text="NomTournoi" textAlignment="CENTER" />
+                  <ImageView fx:id="i3" fitHeight="200.0" fitWidth="200.0" layoutX="113.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="supp3" layoutX="41.0" layoutY="240.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="126.0" text="supprimer">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="mod3" layoutX="239.0" layoutY="243.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="126.0" text="modifier">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="n4" alignment="CENTER" layoutX="156.0" layoutY="200.0" prefHeight="21.0" prefWidth="115.0" text="NomTournoi" textAlignment="CENTER" />
+                  <ImageView fx:id="i4" fitHeight="200.0" fitWidth="200.0" layoutX="113.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="supp4" layoutX="50.0" layoutY="231.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="126.0" text="supprimer">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="mod4" layoutX="261.0" layoutY="233.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="126.0" text="modifier">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="togL" layoutX="3.0" layoutY="-8.0" mnemonicParsing="false" text="&lt;" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="n5" alignment="CENTER" layoutX="156.0" layoutY="200.0" prefHeight="21.0" prefWidth="115.0" text="NomTournoi" textAlignment="CENTER" />
+                  <ImageView fx:id="i5" fitHeight="200.0" fitWidth="200.0" layoutX="113.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="supp5" layoutX="41.0" layoutY="238.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="126.0" text="supprimer">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="mod5" layoutX="232.0" layoutY="237.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="126.0" text="modifier">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="n6" alignment="CENTER" layoutX="156.0" layoutY="200.0" prefHeight="21.0" prefWidth="115.0" text="NomTournoi" textAlignment="CENTER" />
+                  <ImageView fx:id="i6" fitHeight="200.0" fitWidth="200.0" layoutX="113.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="supp6" layoutX="54.0" layoutY="239.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="126.0" text="supprimer">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="mod6" layoutX="276.0" layoutY="241.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="126.0" text="modifier">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </GridPane>
+      <Button fx:id="tog" layoutX="1268.0" layoutY="538.0" mnemonicParsing="false" text="&gt;" />
+   </children>
+</AnchorPane>
