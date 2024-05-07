@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
@@ -39,6 +40,9 @@ public class ParticipationController {
     private Label d4;
     @FXML
     private ImageView I;
+    @FXML
+    private Label pourc;
+
 
     @FXML
     private Label R;
@@ -65,16 +69,50 @@ public class ParticipationController {
     private Label d3;
 
     @FXML
+    private ImageView pu;
+
+    @FXML
+    private ImageView pd;
+
+    @FXML
+    private Rectangle pr;
+
+    void rate(Rectangle pr,int note){
+        pr.setWidth((double) (340 * note) /100);
+    }
+
+    @FXML
     void initialize() throws SQLException, IOException {
         Tournoi t =ps.recuperer(idT);
         R.setText(Integer.toString(t.getId()));
         J.setText(t.getJeuID().getNom());
         T.setText(t.getType());
         D.setText(String.valueOf(t.getDate()));
-        InputStream in = t.getJeuID().getImage().getBinaryStream();
-        BufferedImage image = ImageIO.read(in);
-        Image finalImg = SwingFXUtils.toFXImage(image, null);
-        I.setImage(finalImg);
+        I.setImage(t.getJeuID().getImage());
+        rate(pr,t.getNote());
+        pourc.setText(String.valueOf(t.getNote())+" %");
+
+        pu.setOnMouseClicked(mouseEvent -> {
+            try {
+                ps.noter(t.getId(),100);
+                Tournoi t2 =ps.recuperer(idT);
+                rate(pr,t2.getNote());
+                pourc.setText(String.valueOf(t2.getNote())+" %");
+            } catch (SQLException | IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        pd.setOnMouseClicked(mouseEvent -> {
+            try {
+                ps.noter(t.getId(),0);
+                Tournoi t2 =ps.recuperer(idT);
+                rate(pr,t2.getNote());
+                pourc.setText(String.valueOf(t2.getNote())+" %");
+            } catch (SQLException | IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
     }
     @FXML
     void navhome(MouseEvent mouseEvent) {

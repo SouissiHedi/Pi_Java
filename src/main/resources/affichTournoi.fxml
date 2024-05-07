@@ -181,6 +181,8 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Label fx:id="c1" layoutX="311.0" layoutY="200.0" text="Label" />
+                  <Label fx:id="ch1" layoutX="323.0" layoutY="4.0" prefHeight="21.0" prefWidth="126.0" text="Chrono" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
@@ -197,6 +199,8 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Label fx:id="c2" layoutX="331.0" layoutY="200.0" text="Label" />
+                  <Label fx:id="ch2" layoutX="326.0" layoutY="4.0" prefHeight="21.0" prefWidth="126.0" text="Chrono" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
@@ -213,6 +217,8 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Label fx:id="c3" layoutX="324.0" layoutY="200.0" text="Label" />
+                  <Label fx:id="ch3" layoutX="328.0" layoutY="4.0" prefHeight="21.0" prefWidth="126.0" text="Chrono" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
@@ -229,6 +235,8 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Label fx:id="c4" layoutX="322.0" layoutY="200.0" text="Label" />
+                  <Label fx:id="ch4" layoutX="322.0" layoutY="4.0" prefHeight="21.0" prefWidth="126.0" text="Chrono" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -245,6 +253,8 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Label fx:id="c5" layoutX="315.0" layoutY="200.0" text="Label" />
+                  <Label fx:id="ch5" layoutX="328.0" layoutY="4.0" prefHeight="21.0" prefWidth="126.0" text="Chrono" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -261,6 +271,8 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Label fx:id="c6" layoutX="313.0" layoutY="200.0" text="Label" />
+                  <Label fx:id="ch6" layoutX="319.0" layoutY="4.0" prefHeight="21.0" prefWidth="126.0" text="Chrono" />
                </children>
             </Pane>
          </children>

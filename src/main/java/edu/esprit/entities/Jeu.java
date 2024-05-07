@@ -1,6 +1,7 @@
 package edu.esprit.entities;
 
 import java.sql.Blob;
+import javafx.scene.image.Image;
 
 public class Jeu {
     private int id;
@@ -8,10 +9,11 @@ public class Jeu {
     private String nom;
     private String genre;
     private String developpeur;
-    private Blob image;
+    private Image image;
+    private String url;
     private Blob game;
 
-    public Jeu(int id, int jeu_id, String nom, String genre, String developpeur, Blob image, Blob game) {
+    public Jeu(int id, int jeu_id, String nom, String genre, String developpeur, Image image, Blob game) {
         this.id=id;
         this.jeu_id = jeu_id;
         this.nom = nom;
@@ -19,6 +21,24 @@ public class Jeu {
         this.developpeur = developpeur;
         this.image = image;
         this.game = game;
+    }
+    public Jeu(int id, int jeu_id, String nom, String genre, String developpeur, Image image,String url, Blob game) {
+        this.id=id;
+        this.jeu_id = jeu_id;
+        this.nom = nom;
+        this.genre = genre;
+        this.developpeur = developpeur;
+        this.url=url;
+        this.image = image;
+        this.game = game;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public int getId() {
@@ -61,11 +81,11 @@ public class Jeu {
         this.developpeur = developpeur;
     }
 
-    public Blob getImage() {
+    public Image getImage() {
         return image;
     }
 
-    public void setImage(Blob image) {
+    public void setImage(Image image) {
         this.image = image;
     }
 

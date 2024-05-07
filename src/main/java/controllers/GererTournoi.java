@@ -262,10 +262,7 @@ public class GererTournoi {
         tournois = ps.afficher();
         for (int a=page*6;a<(page+1)*6-c.get();a++) {
             labels[a%6].setText(Integer.toString(tournois.get(a).getTournoiId()));
-            InputStream in = tournois.get(a).getJeuID().getImage().getBinaryStream();
-            BufferedImage image = ImageIO.read(in);
-            Image finalImg = SwingFXUtils.toFXImage(image, null);
-            views[a%6].setImage(finalImg);
+            views[a%6].setImage(tournois.get(a).getJeuID().getImage());
         }
     }
     @FXML

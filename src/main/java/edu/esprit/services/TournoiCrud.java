@@ -86,17 +86,20 @@ public class TournoiCrud implements ICrud<Tournoi>{
                 connection = MyConnection.getInstance().getCnx();
             }
 
-            String req = "UPDATE tournoi SET tournoi_id = ?, type = ?, count = ?, participation_id = null, jeu_id_id = ?, date = ? WHERE id = ?";
+            String req = "UPDATE tournoi SET tournoi_id = ?, type = ?, count = ?, participation_id = null, jeu_id_id = ?, date = ?, review = ?, note = ? WHERE id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(req)) {
                 preparedStatement.setInt(1, tournoi.getTournoiId());
                 preparedStatement.setString(2, tournoi.getType());
                 preparedStatement.setInt(3, tournoi.getCount());
                 preparedStatement.setInt(4, tournoi.getJeuID().getId());
                 preparedStatement.setDate(5, tournoi.getDate());
-                preparedStatement.setInt(6, tournoi.getId());
+                preparedStatement.setInt(6, tournoi.getReview());
+                preparedStatement.setInt(7, tournoi.getNote());
+                preparedStatement.setInt(8, tournoi.getId());
 
                 preparedStatement.executeUpdate();
             }
+            System.out.println(tournoi.getNote());
         } catch (SQLException e) {
             // Handle SQL exceptions appropriately
             e.printStackTrace();
@@ -203,6 +206,8 @@ public class TournoiCrud implements ICrud<Tournoi>{
             t.setType(rs.getString("type"));
             t.setDate(rs.getDate("date"));
             t.setCount(rs.getInt("count"));
+            t.setNote(rs.getInt("note"));
+            t.setReview(rs.getInt("review"));
             Jeu a =js.getOneById(rs.getInt("jeu_id_id"));
             t.setJeuID(a);
             System.out.println(a);
@@ -234,6 +239,33 @@ public class TournoiCrud implements ICrud<Tournoi>{
         return false;
     }
 
+    public int incrementCount(int id) throws SQLException, IOException {
+        int c =recuperer(Integer.toString(id)).getCount();
+        if(c<10){
+            try {
+                if (connection.isClosed()) {
+                    // Reopen the connection if it's closed
+                    connection = MyConnection.getInstance().getCnx();
+                }
+
+                String req = "UPDATE tournoi SET count = ? WHERE id = ?";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(req)) {
+                    preparedStatement.setInt(1, c+1);
+                    preparedStatement.setInt(2, id);
+
+                    preparedStatement.executeUpdate();
+                }
+            } catch (SQLException e) {
+                // Handle SQL exceptions appropriately
+                e.printStackTrace();
+                throw e; // Rethrow the exception if needed
+            }
+            return 1;
+        }else{
+            showAlert("Erreur","Tournoi Complet");
+            return 0;
+        }
+    }
     public boolean tournoiU(int id) throws SQLException {
         String query = "SELECT COUNT(*) FROM tournoi WHERE tournoi_id = ?";
         try (Connection connection = MyConnection.getInstance().getCnx();
@@ -293,6 +325,16 @@ public class TournoiCrud implements ICrud<Tournoi>{
             throw new SQLException("No tournoi found with type "+i);
         }
         return t;
+    }
+
+    public void noter(int id,int currentN) throws SQLException, IOException {
+        Tournoi t =recuperer(Integer.toString(id));
+        int n =t.getNote();
+        int nbr =t.getReview();
+        int newN= (n *nbr +currentN)/(t.getReview()+1);
+        t.setNote(newN);
+        t.setReview(t.getReview()+1);
+        modifier(t);
     }
 
 }

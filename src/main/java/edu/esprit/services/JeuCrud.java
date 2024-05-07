@@ -3,8 +3,11 @@ package edu.esprit.services;
 import edu.esprit.entities.Jeu;
 import edu.esprit.entities.Tournoi;
 import edu.esprit.tools.MyConnection;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,20 +33,20 @@ public class JeuCrud implements ICrud<Jeu>{
 
     @Override
     public int ajouter2(Jeu j) throws SQLException {
-        String req1="INSERT INTO jeu(jeu_id,nom,genre,developpeur,image,game) VALUES (?,?,?,?,?,?)";
+        /*String req1="INSERT INTO jeu(jeu_id,nom,genre,developpeur,image,game) VALUES (?,?,?,?,?,?)";
         try {
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(req1);
             pst.setInt(1,j.getJeu_id());
             pst.setString(2,j.getNom());
             pst.setString(3,j.getGenre());
             pst.setString(4,j.getDeveloppeur());
-            pst.setBlob(5,j.getImage());
+            pst.setString(5,j.getImage());
             pst.setBlob(5,j.getGame());
             pst.executeUpdate();
             System.out.println("Jeu ajouté !");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        }
+        }*/
         return 0;
     }
 
@@ -72,10 +75,18 @@ public class JeuCrud implements ICrud<Jeu>{
                     String nom = rs.getString("nom");
                     String genre = rs.getString("genre");
                     String dev = rs.getString("developpeur");
-                    Blob image = rs.getBlob("image");
+                    String imageUrl = rs.getString("image");
                     Blob game = rs.getBlob("game");
+                    imageUrl = "http://localhost/images/" + imageUrl;
+                    try {
+                        // Create an Image object from the URL
+                        Image finalImg = new Image(new URL(imageUrl).toString());
+                        jeu = new Jeu(id,jeuId, nom, genre, dev, finalImg, game);
+                    } catch (MalformedURLException e) {
+                        // Handle malformed URL exception
+                        e.printStackTrace();
+                    }
 
-                    jeu = new Jeu(id,jeuId, nom, genre, dev, image, game);
                 }
             }
         } catch (SQLException e) {
@@ -98,10 +109,17 @@ public class JeuCrud implements ICrud<Jeu>{
                     String name = rs.getString("nom");
                     String genre = rs.getString("genre");
                     String dev = rs.getString("developpeur");
-                    Blob image = rs.getBlob("image");
                     Blob game = rs.getBlob("game");
-
-                    jeu = new Jeu(id,jeuId, nom, genre, dev, image, game);
+                    String imageUrl = rs.getString("image");
+                    imageUrl = "http://localhost/images/" + imageUrl;
+                    try {
+                        // Create an Image object from the URL
+                        Image finalImg = new Image(new URL(imageUrl).toString());
+                        jeu = new Jeu(id,jeuId, nom, genre, dev, finalImg, game);
+                    } catch (MalformedURLException e) {
+                        // Handle malformed URL exception
+                        e.printStackTrace();
+                    }
                 }
             }
         } catch (SQLException e) {

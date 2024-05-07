@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class MainFX extends Application {
     public void start(Stage primaryStage) throws Exception {
         // Charger l'interface utilisateur à partir du fichier FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/backTournoi.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/affichTournoi.fxml"));
         Parent root = loader.load();
 
         // Créer une scène avec la taille spécifiée

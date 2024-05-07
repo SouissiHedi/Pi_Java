@@ -10,6 +10,8 @@ public class Tournoi {
     public int jeuIdInt;
     public java.sql.Date date;
     public int count;
+    public int review;
+    public int note;
 
     public Tournoi() {
     }
@@ -95,6 +97,22 @@ public class Tournoi {
         this.jeuIdInt = jeuIdInt;
     }
 
+    public int getReview() {
+        return review;
+    }
+
+    public void setReview(int review) {
+        this.review = review;
+    }
+
+    public int getNote() {
+        return note;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
+    }
+
     @Override
     public String toString() {
         return "Tournoi{" +
@@ -103,6 +121,8 @@ public class Tournoi {
                 ", type='" + type + '\'' +
                 ", jeuId=" + jeuId +
                 ", date=" + date +
+                ", review=" + review +
+                ", note=" + note +
                 ", count=" + count +
                 '}';
     }
