@@ -16,6 +16,8 @@ import services.ArticleService;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArticleController {
     private final ArticleService ps = new ArticleService();
@@ -43,6 +45,8 @@ public class ArticleController {
     @FXML
     private Label R;
 
+    List<Article> la = new ArrayList<Article>();
+
 
     public ArticleController(String name) throws SQLException {
         setName(name);
@@ -51,6 +55,7 @@ public class ArticleController {
     @FXML
     void initialize() throws SQLException, IOException {
         Article a =ps.recupererNom(name);
+        la.add(a);
         N.setText(name);
         I.setImage(a.getImage());
         L.setText(a.getPrix());
@@ -90,8 +95,10 @@ public class ArticleController {
     }
 
     @FXML
-    void achat(MouseEvent mouseEvent) {
-        //ajouter l'article dans l'inventaire et decrementer la monnaie
+    void achat(MouseEvent mouseEvent) throws SQLException {
+        Stage panStage = new Stage();
+        PanierController controller = new PanierController(panStage,la);
+        redirect("/template.fxml",mouseEvent);
     }
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

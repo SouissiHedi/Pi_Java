@@ -33,7 +33,7 @@ public class MainFX2 {
 
         // Create a PaymentIntent with other payment details
         PaymentIntentCreateParams params = PaymentIntentCreateParams.builder()
-                .setAmount(10000L) // Amount in cents (e.g., $10.00)
+                .setAmount(60000L) // Amount in cents (e.g., $10.00)
                 .setCurrency("usd")
                 .build();
 

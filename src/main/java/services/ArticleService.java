@@ -16,6 +16,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ArticleService implements IService<Article> {
@@ -123,6 +124,44 @@ public class ArticleService implements IService<Article> {
         String sql = "SELECT * FROM article";
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sql);
+        List<Article> articles = new ArrayList<>();
+        while (rs.next()) {
+            Article p = new Article();
+            p.setId(rs.getInt("id"));
+            p.setNom(rs.getString("nom"));
+            p.setPrix(rs.getString("prix"));
+            p.setDescription(rs.getString("description"));
+            p.setType(cs.recuperer1(rs.getInt("type_id")));
+
+
+            String imageUrl = rs.getString("image");
+            imageUrl = "http://localhost/images/" + imageUrl;
+            try {
+                Image finalImg = new Image(new URL(imageUrl).toString());
+                p.setImage(finalImg);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            articles.add(p);
+        }
+        return articles;
+    }
+
+    @Override
+    public List<Article> recuperer(String nom, String desc, String prix,String type) throws SQLException, IOException {
+        String[] typeIds = type.split(",");
+        String sql = "SELECT * FROM article WHERE nom LIKE ? AND description LIKE ? AND prix LIKE ? AND type_id IN (" +
+                String.join(",", Collections.nCopies(typeIds.length, "?")) + ")";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, "%" + nom + "%");
+        statement.setString(2, "%" + desc + "%");
+        statement.setString(3, "%" + prix + "%");
+
+        // Set the type IDs as parameters for the IN clause
+        for (int i = 0; i < typeIds.length; i++) {
+            statement.setString(4 + i, typeIds[i]);
+        }
+        ResultSet rs = statement.executeQuery();
         List<Article> articles = new ArrayList<>();
         while (rs.next()) {
             Article p = new Article();

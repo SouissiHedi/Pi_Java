@@ -16,6 +16,8 @@ public interface IService<T> {
 
     List<T> recuperer() throws SQLException, IOException;
 
+    List<Article> recuperer(String nom, String desc, String prix,String type) throws SQLException, IOException;
+
     List<String> recupererId() throws SQLException, IOException;
 
     T recuperer1(int i) throws SQLException, IOException;

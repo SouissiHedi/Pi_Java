@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+
+<StackPane prefHeight="250.0" prefWidth="700.0" style="-fx-background-color: transparent; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="375.0" prefWidth="667.0" style="-fx-background-color: lightblue; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="368.0" layoutY="23.0" prefHeight="31.0" prefWidth="116.0" text="Categories :" textFill="#0d00ff">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="23.0" prefHeight="31.0" prefWidth="116.0" text="Nom :" textFill="#0d00ff">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nomC" layoutX="48.0" layoutY="54.0" />
+            <TextField fx:id="descC" layoutX="48.0" layoutY="131.0" />
+            <Label layoutX="48.0" layoutY="100.0" prefHeight="31.0" prefWidth="157.0" text="Description :" textFill="#0d00ff">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="prixC" layoutX="48.0" layoutY="205.0" />
+            <Label layoutX="48.0" layoutY="174.0" prefHeight="31.0" prefWidth="116.0" text="Prix :" textFill="#0d00ff">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <VBox fx:id="container" layoutX="406.0" layoutY="61.0" prefHeight="184.0" prefWidth="242.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="242.0">
+                     <children>
+                        <CheckBox mnemonicParsing="false" text="Toutes les categories" wrapText="true" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</StackPane>

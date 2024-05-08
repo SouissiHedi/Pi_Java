@@ -1,12 +1,17 @@
 package controllers;
 
+import com.stripe.model.tax.Registration;
 import edu.esprit.entities.Article;
+import edu.esprit.entities.CategoryArticle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,22 +24,37 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import services.ArticleService;
+import services.CategotyArticleService;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class AfficherBoutiqueController {
-    int page =0;
-
     private final ArticleService ps = new ArticleService();
+    private final CategotyArticleService cs = new CategotyArticleService();
+    int page =0;
+    int c=ps.articleCount();
+    int pageMax=(c-3);
+    Article test =new Article();
+
+    public Article getTest() {
+        return test;
+    }
+
+    public void setTest(Article test) {
+        this.test = test;
+    }
+
+
     @FXML
     private Label P1;
 
@@ -110,22 +130,44 @@ public class AfficherBoutiqueController {
     @FXML
     private ImageView left;
 
+    @FXML
+    private ChoiceBox<String> triCB;
+
+    @FXML
+    private ImageView tri;
+
+    @FXML
+    private ImageView search;
+
+    List<Article> articles ;
+
+    Label[] names = {N1,N2,N3};
+    Label[] descs = {D1,D2,D3};
+    Label[] prices = {P1,P2,P3};
+    ImageView[] views = {im1,im2,im3};
+    StackPane[] stak = {sp1,sp2,sp3};
+
     public AfficherBoutiqueController() throws SQLException {
     }
 
     @FXML
     void initialize() throws SQLException, IOException {
+        triCB.getItems().setAll("-Défaut-","Nom","Description","Prix");
+        triCB.setValue("-Défaut-");
+        if(pageMax==0){
+            right.setVisible(false);
+        }
+
         left.setVisible(false);
         Label[] names = {N1,N2,N3};
         Label[] descs = {D1,D2,D3};
         Label[] prices = {P1,P2,P3};
         ImageView[] views = {im1,im2,im3};
-        ImageView[] buttons = {B1,B2,B3};
         StackPane[] stak = {sp1,sp2,sp3};
-        List<Article> articles = ps.recuperer();
+        ImageView[] buttons = {B1,B2,B3};
+        this.articles = ps.recuperer();
 
-        int c=ps.articleCount();
-        int pageMax=(c-3);
+
 
         B1.setOnMouseClicked(event -> {
             try {
@@ -180,9 +222,7 @@ public class AfficherBoutiqueController {
                     page++;
                     if(page==pageMax){right.setVisible(false);}
                     resetT(articles, names, descs, prices, views,stak);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
+                } catch (SQLException | IOException e) {
                     throw new RuntimeException(e);
                 }
             }
@@ -194,34 +234,82 @@ public class AfficherBoutiqueController {
                     page--;
                     if(page==0){left.setVisible(false);}
                     resetT(articles, names, descs, prices, views,stak);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
+                } catch (SQLException | IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         });
 
-        pan.setOnMouseClicked(event -> {
+        tri.setOnMouseClicked(mouseEvent -> {
+            if (triCB.isVisible()){
+                trier(articles,triCB.getValue());
+                try {
+                    resetT(articles,names, descs,prices,views,stak);
+                } catch (SQLException | IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            switchVis(triCB);
+        });
+
+        search.setOnMouseClicked(mouseEvent -> {
+            test.addPropertyChangeListener(new PropertyChangeListener() {
+                @Override
+                public void propertyChange(PropertyChangeEvent evt) {
+                    try {
+                        articles=ps.recuperer(emp(test.getNom()),emp(test.getDescription()),emp(test.getPrix()),emp2(test.getUrl()));
+                        System.out.println(test);
+                        System.out.println(articles);
+                        trier(articles,triCB.getValue());
+                        resetT(articles, names, descs, prices, views, stak);
+                        page=0;
+                        left.setVisible(false);
+                    } catch (SQLException | IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/panier.fxml"));
-
-                PanierController controller = new PanierController();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/recherche.fxml"));
+                Stage rechStage = new Stage();
+                RechercheController controller = new RechercheController(rechStage,this);
                 loader.setController(controller);
-
-                Parent root = loader.load();
-                Stage panStage = new Stage();
+                Parent rootR = loader.load();
                 // Create the rectangular clip to round the corners
                 javafx.scene.shape.Rectangle rect = new Rectangle(1024, 768);
                 rect.setArcHeight(60.0);
                 rect.setArcWidth(60.0);
 
                 // Create the scene
-                Scene scene = new Scene(root, 300, 500);
+                Scene Rscene = new Scene(rootR, 700, 250);
+                Rscene.setFill(Color.TRANSPARENT);
+                rechStage.setTitle("Fenetre de Recherche");
+                rechStage.setScene(Rscene);
+                rechStage.showAndWait();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        pan.setOnMouseClicked(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/panier.fxml"));
+                Stage panStage = new Stage();
+                List<Article> la = new ArrayList<Article>();
+                PanierController controller = new PanierController(panStage,la);
+                loader.setController(controller);
+                Parent root2 = loader.load();
+                // Create the rectangular clip to round the corners
+                javafx.scene.shape.Rectangle rect = new Rectangle(1024, 768);
+                rect.setArcHeight(60.0);
+                rect.setArcWidth(60.0);
+
+                // Create the scene
+                Scene scene2 = new Scene(root2, 350, 500);
                 panStage.initStyle(StageStyle.TRANSPARENT);
-                scene.setFill(Color.TRANSPARENT);
+                scene2.setFill(Color.TRANSPARENT);
                 panStage.setTitle("Panier");
-                panStage.setScene(scene);
+                panStage.setScene(scene2);
                 panStage.showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -229,15 +317,72 @@ public class AfficherBoutiqueController {
         });
 
     }
+
+    private static int compareIgnoreCase(String str1, String str2) {
+        int len1 = str1.length();
+        int len2 = str2.length();
+        int minLength = Math.min(len1, len2);
+
+        for (int i = 0; i < minLength; i++) {
+            char c1 = Character.toLowerCase(str1.charAt(i));
+            char c2 = Character.toLowerCase(str2.charAt(i));
+            if (c1 != c2) {
+                return c1 - c2;
+            }
+        }
+
+        return len1 - len2;
+    }
+
+    public void trier(List<Article> articles,String value) {
+        switch (value) {
+            case "-Défaut-":
+                articles.sort(Comparator.comparing(Article::getId));
+                break;
+            case "Nom":
+                articles.sort(Comparator.comparing(Article::getCaseNom));
+                break;
+            case "Description":
+                articles.sort(Comparator.comparing(Article::getCaseDescription));
+                break;
+            case "Prix":
+                articles.sort(Comparator.comparing(Article::getIntPrix));
+                break;
+        }
+    }
+
     public void resetT(List<Article> articles, Label[] names, Label[] descs, Label[] prices, ImageView[] views, StackPane[] stak) throws SQLException, IOException {
+        ImageView[] cards = {C1,C2,C3};
+        ImageView[] buttons = {B1,B2,B3};
+        int max = articles.size();
+        pageMax=max-3;
+        right.setVisible(pageMax > 0);
         for (int a=0;a<+3;a++) {
-            names[a].setText(articles.get(page+a).getNom());
-            views[a].setImage(articles.get(page+a).getImage());
-            descs[a].setText(articles.get(page+a).getDescription());
-            prices[a].setText(articles.get(page+a).getPrix());
-            double h=(views[a].getFitHeight() - views[a].getBoundsInParent().getHeight())/2;
-            double w=(views[a].getFitWidth() - views[a].getBoundsInParent().getWidth())/2;
-            stak[a].setMargin(views[a],new javafx.geometry.Insets(h, 0, 0, w));
+            if(page+a>=max){
+                names[a].setVisible(false);
+                views[a].setVisible(false);
+                descs[a].setVisible(false);
+                prices[a].setVisible(false);
+                stak[a].setVisible(false);
+                cards[a].setVisible(false);
+                buttons[a].setVisible(false);
+            }else {
+                names[a].setVisible(true);
+                views[a].setVisible(true);
+                descs[a].setVisible(true);
+                prices[a].setVisible(true);
+                stak[a].setVisible(true);
+                cards[a].setVisible(true);
+                buttons[a].setVisible(true);
+                names[a].setText(articles.get(page + a).getNom());
+                views[a].setImage(articles.get(page + a).getImage());
+                descs[a].setText(articles.get(page + a).getDescription());
+                prices[a].setText(articles.get(page + a).getPrix());
+                double h = (views[a].getFitHeight() - views[a].getBoundsInParent().getHeight()) / 2;
+                double w = (views[a].getFitWidth() - views[a].getBoundsInParent().getWidth()) / 2;
+                stak[a].setMargin(views[a], new javafx.geometry.Insets(h, 0, 0, w));
+                right.setVisible(pageMax !=page);
+            }
         }
     }
     public static int getIndex(ImageView[] array, ImageView targetValue) {
@@ -248,6 +393,25 @@ public class AfficherBoutiqueController {
         }
         return -1;
     }
+
+    void switchVis(ChoiceBox<String> ch) {
+        ch.setVisible(!ch.isVisible());
+    }
+
+    public String emp(String k) {
+        if(k==null){
+            return "";
+        }
+        return k;
+    }
+
+    public String emp2(String k) {
+        if(k==null){
+            return "-1";
+        }
+        return k;
+    }
+
 
     void achat(MouseEvent event, ImageView b) throws SQLException {
         Label[] names = {N1,N2,N3};

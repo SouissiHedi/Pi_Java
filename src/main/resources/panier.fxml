@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 
-<StackPane style="-fx-background-color: transparent; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: transparent; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-       <VBox prefHeight="500.0" prefWidth="300" style="-fx-background-color: #019ef3; -fx-background-radius: 20;">
+       <VBox prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #019ef3; -fx-background-radius: 20;">
           <children>
-            <Pane prefHeight="500.0" prefWidth="300.0">
+            <Pane prefHeight="500.0" prefWidth="350.0">
                <children>
                     <!-- Your cart content here -->
                     <Label layoutX="85.0" layoutY="25.0" style="-fx-font-size: 18pt; -fx-text-fill: white;" text="Votre Panier">
@@ -18,16 +20,270 @@
                         <Font name="System Bold" size="15.0" />
                      </font></Label>
                     <Button fx:id="BY" layoutX="56.0" layoutY="459.0" text="Achat" />
-                  <Button fx:id="BK" layoutX="183.0" layoutY="459.0" text="Retour" />
-                  <ScrollPane blendMode="SRC_ATOP" fitToWidth="true" layoutX="18.0" layoutY="78.0" prefHeight="372.0" prefViewportHeight="451.0" prefViewportWidth="265.0" prefWidth="267.0" style="-fx-background-color: transparent; -fx-background-radius: 20;">
+                  <Button fx:id="BK" layoutX="225.0" layoutY="459.0" text="Fermer" />
+                  <ScrollPane blendMode="SRC_ATOP" fitToWidth="true" layoutX="18.0" layoutY="78.0" prefHeight="377.0" prefViewportHeight="451.0" prefViewportWidth="265.0" prefWidth="331.0" style="-fx-background-color: #019ef3; -fx-background-radius: 20;">
                      <content>
-                        <VBox alignment="TOP_CENTER" blendMode="SRC_ATOP" layoutX="18.0" layoutY="78.0" prefHeight="370.0" prefWidth="186.0" style="-fx-background-color: lightblue; -fx-background-insets: 0; -fx-background-radius: 20;">
+                        <Pane prefHeight="376.0" prefWidth="329.0" scaleShape="false" style="-fx-background-color: #019ef3;">
                            <children>
-                                <Label text="Item 1: $10" />
-                                <Label text="Item 2: $20" />
-                                <Label text="Item 3: $15" />
+                              <VBox fx:id="container" alignment="TOP_CENTER" blendMode="SRC_ATOP" prefHeight="372.0" prefWidth="311.0" style="-fx-background-color: lightblue; -fx-background-insets: 0; -fx-background-radius: 20;">
+                                 <children>
+                                    <HBox fx:id="article" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="267.0">
+                                       <children>
+                                          <AnchorPane>
+                                             <children>
+                                                 <ImageView fx:id="im" fitHeight="47.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+
+                                                   <image>
+                                                      <Image url="@../../../../../../../wamp64/www/images/ic.png" />
+                                                   </image>
+                                                 </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="2.0" />
+                                             </HBox.margin>
+                                          </AnchorPane>
+                                            <Label fx:id="nom" prefHeight="47.0" prefWidth="165.0" text="Rick and Morty">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="prix" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" prefWidth="68.0" text="22222" textAlignment="RIGHT">
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="13.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="21.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/coin.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="15.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox fx:id="article1" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="267.0">
+                                       <children>
+                                          <AnchorPane>
+                                             <children>
+                                                <ImageView fx:id="im1" fitHeight="47.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../../../../wamp64/www/images/ic.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="2.0" />
+                                             </HBox.margin>
+                                          </AnchorPane>
+                                          <Label fx:id="nom1" prefHeight="47.0" prefWidth="165.0" text="Rick and Morty">
+                                             <font>
+                                                <Font name="Arial" size="13.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="prix1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" prefWidth="68.0" text="22222" textAlignment="RIGHT">
+                                             <font>
+                                                <Font name="Arial" size="13.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="21.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/coin.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox fx:id="article11" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="267.0">
+                                       <children>
+                                          <AnchorPane>
+                                             <children>
+                                                <ImageView fx:id="im11" fitHeight="47.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../../../../wamp64/www/images/ic.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="2.0" />
+                                             </HBox.margin>
+                                          </AnchorPane>
+                                          <Label fx:id="nom11" prefHeight="48.0" prefWidth="165.0" text="Rick and Morty">
+                                             <font>
+                                                <Font name="Arial" size="13.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="prix11" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" prefWidth="68.0" text="22222" textAlignment="RIGHT">
+                                             <font>
+                                                <Font name="Arial" size="13.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="21.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/coin.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox fx:id="article2" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="267.0">
+                                       <children>
+                                          <AnchorPane>
+                                             <children>
+                                                <ImageView fx:id="im2" fitHeight="47.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../../../../wamp64/www/images/ic.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="2.0" />
+                                             </HBox.margin>
+                                          </AnchorPane>
+                                          <Label fx:id="nom2" prefHeight="48.0" prefWidth="165.0" text="Rick and Morty">
+                                             <font>
+                                                <Font name="Arial" size="13.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="prix2" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" prefWidth="68.0" text="22222" textAlignment="RIGHT">
+                                             <font>
+                                                <Font name="Arial" size="13.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="21.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/coin.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox fx:id="article12" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="267.0">
+                                       <children>
+                                          <AnchorPane>
+                                             <children>
+                                                <ImageView fx:id="im12" fitHeight="47.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../../../../wamp64/www/images/ic.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="2.0" />
+                                             </HBox.margin>
+                                          </AnchorPane>
+                                          <Label fx:id="nom12" prefHeight="48.0" prefWidth="165.0" text="Rick and Morty">
+                                             <font>
+                                                <Font name="Arial" size="13.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="prix12" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" prefWidth="68.0" text="22222" textAlignment="RIGHT">
+                                             <font>
+                                                <Font name="Arial" size="13.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="21.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/coin.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox fx:id="article3" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="267.0">
+                                       <children>
+                                          <AnchorPane>
+                                             <children>
+                                                <ImageView fx:id="im3" fitHeight="47.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../../../../wamp64/www/images/ic.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="2.0" />
+                                             </HBox.margin>
+                                          </AnchorPane>
+                                          <Label fx:id="nom3" prefHeight="48.0" prefWidth="165.0" text="Rick and Morty">
+                                             <font>
+                                                <Font name="Arial" size="13.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="prix3" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" prefWidth="68.0" text="22222" textAlignment="RIGHT">
+                                             <font>
+                                                <Font name="Arial" size="13.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="21.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/coin.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
                            </children>
-                        </VBox>
+                        </Pane>
                      </content>
                   </ScrollPane>
                </children>

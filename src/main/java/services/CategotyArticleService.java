@@ -64,6 +64,23 @@ public class CategotyArticleService implements IService<CategoryArticle> {
         return categoryArticles;
     }
 
+    public int count() throws SQLException, IOException {
+        String sql = "select COUNT(*) from category_article";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt(1);
+                }
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public List<Article> recuperer(String nom, String desc, String prix,String type) throws SQLException, IOException {
+        return null;
+    }
+
     @Override
     public List<String> recupererId() throws SQLException, IOException {
         String sql = "select nom_cat from category_article";

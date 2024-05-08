@@ -142,6 +142,7 @@
                   </ImageView>
                </graphic>
             </Label>
+            <ChoiceBox fx:id="triCB" layoutX="927.0" layoutY="208.0" prefHeight="42.0" prefWidth="205.0" visible="false" />
          </children></Pane>
       <Pane blendMode="SRC_ATOP" prefHeight="159.0" prefWidth="1335.0">
          <children>
@@ -287,6 +288,16 @@
                   <Label fx:id="numA" alignment="BOTTOM_CENTER" prefHeight="32.0" prefWidth="29.0" text="+" />
                </children>
             </StackPane>
+            <ImageView fx:id="tri" fitHeight="50.0" fitWidth="50.0" layoutX="1081.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/tri.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="search" fitHeight="50.0" fitWidth="50.0" layoutX="1021.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/search.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
