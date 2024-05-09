@@ -162,6 +162,10 @@ public class CreerTournoiController {
         alert.showAndWait();
     }
     @FXML
+    void navhome(MouseEvent mouseEvent) {
+        redirect("/home.fxml",mouseEvent);
+    }
+    @FXML
     void navrec(MouseEvent mouseEvent) {
         redirect("/home.fxml",mouseEvent);
     }

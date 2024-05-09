@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="891.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="891.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <ImageView fitHeight="891.0" fitWidth="1335.0" opacity="0.29" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -190,5 +190,16 @@
       <Rectangle arcHeight="100.0" arcWidth="5.0" fill="WHITE" height="21.0" layoutX="748.0" layoutY="331.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 20;" width="340.0" />
       <Rectangle fx:id="pr" arcHeight="100.0" arcWidth="5.0" fill="#0080ff" height="21.0" layoutX="748.0" layoutY="331.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 20;" width="340.0" />
       <Label fx:id="pourc" layoutX="895.0" layoutY="331.0" text="Label" />
+      <ImageView fx:id="fb" fitHeight="75.0" fitWidth="87.0" layoutX="558.0" layoutY="656.0" >
+         <image>
+            <Image url="@images/fb.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="d6" layoutX="437.0" layoutY="676.0" prefHeight="35.0" prefWidth="133.0" text="Partager :">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonFB" layoutX="560.0" layoutY="659.0" mnemonicParsing="false" onMouseClicked="#shareOnFacebook" opacity="0.0" prefHeight="69.0" prefWidth="87.0" text="Button" />
    </children>
 </AnchorPane>

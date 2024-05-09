@@ -1,5 +1,9 @@
 package controllers;
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import javafx.scene.control.Button;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,27 +11,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import edu.esprit.services.TournoiCrud;
 import edu.esprit.entities.Tournoi;
 import edu.esprit.services.ParticipationCrud;
 import edu.esprit.entities.Participation;
-import javafx.embed.swing.SwingFXUtils;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.sql.SQLException;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.Temporal;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -39,9 +34,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AfficherTournoiController {
     private final TournoiCrud ps = new TournoiCrud();
     private final ParticipationCrud prs = new ParticipationCrud();
+    public static final String ACCOUNT_SID = "ACfc3795010ca1076b163a0a8cfcc2a589";
+    public static final String AUTH_TOKEN = "f3af72814a060880e42bb21f322cd720";
 
+    static {
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+    }
 
     public int page =0;
+    @FXML
+    private Button chatbotButton;
     @FXML
     private Label pourc;
 
@@ -163,27 +165,42 @@ public class AfficherTournoiController {
 
     public static String decrementTime(String timeString) {
         String[] parts = timeString.split("[,\\s:]");
-        int days = Integer.parseInt(parts[0].trim());
-        int hours = Integer.parseInt(parts[3].trim());
-        int minutes = Integer.parseInt(parts[4].trim());
-        int seconds = Integer.parseInt(parts[5].trim());
 
-        // Decrement seconds
-        seconds--;
-        if (seconds < 0) {
-            seconds = 59;
-            minutes--;
-            if (minutes < 0) {
-                minutes = 59;
-                hours--;
-                if (hours < 0) {
-                    hours = 23;
-                    days--;
-                }
-            }
+        // Vérifier si la longueur du tableau est correcte
+        if (parts.length != 6) {
+            return "Invalid time format";
         }
 
-        return String.format("%d days, %02d:%02d:%02d", days, hours, minutes, seconds);
+        try {
+            int days = Integer.parseInt(parts[0].trim());
+            int hours = Integer.parseInt(parts[3].trim());
+            int minutes = Integer.parseInt(parts[4].trim());
+            int seconds = Integer.parseInt(parts[5].trim());
+
+            // Vérifier la validité des parties avant de les décrémenter
+            if (days < 0 || hours < 0 || minutes < 0 || seconds < 0) {
+                return "Invalid time format";
+            }
+
+            // Décrémenter les secondes
+            seconds--;
+            if (seconds < 0) {
+                seconds = 59;
+                minutes--;
+                if (minutes < 0) {
+                    minutes = 59;
+                    hours--;
+                    if (hours < 0) {
+                        hours = 23;
+                        days--;
+                    }
+                }
+            }
+
+            return String.format("%d days, %02d:%02d:%02d", days, hours, minutes, seconds);
+        } catch (NumberFormatException e) {
+            return "Invalid time format";
+        }
     }
     private void updateTimeLabel() {
         Label[] crono = {ch1,ch2,ch3,ch4,ch5,ch6};
@@ -210,11 +227,17 @@ public class AfficherTournoiController {
         int pageMax=((int)c/6);
         int lastPage=c%6;
         togL.setVisible(false);
+        Date date2 = new Date();
+
+
+
 
         scheduler = Executors.newSingleThreadScheduledExecutor();
         scheduler.scheduleAtFixedRate(this::updateTimeLabel, 0, 1, TimeUnit.SECONDS);
 
-
+        chatbotButton.setOnMouseClicked(event -> {
+            openChatbotPopup(event, chatbotButton);
+        });
         p1.setOnMouseClicked(event -> {
             try {
                 participer(event, p1);
@@ -347,6 +370,9 @@ public class AfficherTournoiController {
     }
 
     public static String getFormattedDifference(Date date1, Date date2) {
+        if (date1 == null || date2 == null) {
+            return "Dates are not initialized";
+        }
         // Calculate the difference between the two dates in milliseconds
         long millisecondsDifference = date2.getTime() - date1.getTime();
 
@@ -462,6 +488,9 @@ public class AfficherTournoiController {
         if(ps.incrementCount(ps.recupererType(labelId).getId())==1) {
             prs.ajouter(participation);
             showAlert("Félicitation", "Vous êtes inscrit au tournoi");
+            String recipientPhoneNumber = "+21622856849";
+            String messageBody = "Le tournoi débutera le :"+ ps.recupererType(labelId).getDate();
+            sendSMS(recipientPhoneNumber, messageBody);
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/participation.fxml"));
 
@@ -518,6 +547,36 @@ public class AfficherTournoiController {
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+    @FXML
+    void openChatbotPopup(MouseEvent event, Button chatbotButton) {
+        try {
+            // Load the FXML file for the chatbot popup
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChatbotPopup.fxml"));
+            Parent root = loader.load();
+
+            // Create a new stage for the chatbot popup
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Chatbot");
+            stage.setScene(new Scene(root));
+
+            // Show the chatbot popup
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void sendSMS(String recipientPhoneNumber, String messageBody) {
+        String twilioPhoneNumber = "+18507883042";
+
+        Message message = Message.creator(
+                        new PhoneNumber(recipientPhoneNumber),
+                        new PhoneNumber(twilioPhoneNumber),
+                        messageBody)
+                .create();
+
+        System.out.println("SMS sent successfully. SID: " + message.getSid());
     }
 
 

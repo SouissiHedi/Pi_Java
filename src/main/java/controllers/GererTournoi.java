@@ -1,39 +1,41 @@
 package controllers;
 
+import java.util.stream.Collectors;
+
 import edu.esprit.entities.Tournoi;
 import edu.esprit.services.JeuCrud;
 import edu.esprit.services.TournoiCrud;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
+
 
 public class GererTournoi {
     private final JeuCrud js=new JeuCrud();
     private final TournoiCrud ps = new TournoiCrud();
     public int page =0;
+    @FXML
+    private ImageView statisticsButton;
     @FXML
     private Button mod5;
 
@@ -132,6 +134,14 @@ public class GererTournoi {
         int c=ps.tournoiCount();
         AtomicInteger aff= new AtomicInteger();
         int pageMax=((int)c/6);
+        statisticsButton.setOnMouseClicked(event -> {
+            try {
+                showCategoryStatistics(event, statisticsButton);
+                resetT(tournois,labels,views,aff);
+            } catch (SQLException | IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         supp1.setOnMouseClicked(event -> {
             try {
@@ -358,6 +368,34 @@ public class GererTournoi {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
+        alert.showAndWait();
+    }
+    @FXML
+    private void showCategoryStatistics(MouseEvent event, ImageView statisticsButton) {
+        // Get the list of all posts from the table
+        List<Tournoi> tournois = ps.afficher();
+
+        // Count occurrences of each category
+        Map<String, Long> categoryCounts = tournois.stream()
+                    .collect(Collectors.groupingBy(Tournoi::getType
+
+                        , Collectors.counting()));
+
+        // Create a PieChart Data list
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+        for (Map.Entry<String, Long> entry : categoryCounts.entrySet()) {
+            pieChartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
+        }
+
+        // Create a PieChart
+        PieChart pieChart = new PieChart(pieChartData);
+        pieChart.setTitle("Tournois Statistics");
+
+        // Create a new alert dialog with PieChart as the content
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Tournois Statistics");
+        alert.setHeaderText(null);
+        alert.getDialogPane().setContent(pieChart);
         alert.showAndWait();
     }
 

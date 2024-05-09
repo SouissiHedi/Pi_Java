@@ -16,6 +16,7 @@
          </image>
       </ImageView>
       <Pane blendMode="SRC_ATOP" prefHeight="159.0" prefWidth="1335.0">
+
          <children>
             <ImageView fitHeight="300.0" fitWidth="1335.0" layoutY="-46.0" pickOnBounds="true" rotate="180.0">
                <image>
@@ -154,6 +155,15 @@
                   <Font name="System Italic" size="36.0" />
                </font>
             </Text>
+
+
+               <Button fx:id="chatbotButton" layoutX="1158.0" layoutY="170.0" prefHeight="58.0" prefWidth="75.0" />
+            <ImageView fitHeight="48.0" fitWidth="67.0" layoutX="1162.0" layoutY="175.0">
+               <image>
+                  <Image url="@images/chat.png" />
+               </image>
+            </ImageView>
+
          </children>
       </Pane>
       <GridPane layoutX="32.0" layoutY="243.0" prefHeight="591.0" prefWidth="1276.0">
@@ -207,7 +217,6 @@
                <children>
                   <Label fx:id="n3" alignment="CENTER" layoutX="156.0" layoutY="200.0" prefHeight="21.0" prefWidth="115.0" text="NomTournoi" textAlignment="CENTER" />
                   <Button fx:id="p3" layoutX="150.0" layoutY="232.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="126.0" text="Participer" />
-                  <ImageView fx:id="i3" fitHeight="200.0" fitWidth="200.0" layoutX="113.0" pickOnBounds="true" preserveRatio="true" />
                   <Button fx:id="v3" layoutX="313.0" layoutY="236.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="48.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fitHeight="36.0" fitWidth="109.0" preserveRatio="true">
@@ -219,6 +228,7 @@
                   </Button>
                   <Label fx:id="c3" layoutX="324.0" layoutY="200.0" text="Label" />
                   <Label fx:id="ch3" layoutX="328.0" layoutY="4.0" prefHeight="21.0" prefWidth="126.0" text="Chrono" />
+                  <ImageView fx:id="i3" fitHeight="200.0" fitWidth="200.0" layoutX="113.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">

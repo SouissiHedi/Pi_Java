@@ -2,24 +2,25 @@ package controllers;
 
 import edu.esprit.entities.Tournoi;
 import edu.esprit.services.TournoiCrud;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
+import java.awt.*;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 
 public class ParticipationController {
@@ -35,6 +36,8 @@ public class ParticipationController {
         System.out.println(t);
         setIdT(Integer.toString(t.getId()));
     }
+    @FXML
+    private Button buttonFB;
 
     @FXML
     private Label d4;
@@ -91,7 +94,6 @@ public class ParticipationController {
         I.setImage(t.getJeuID().getImage());
         rate(pr,t.getNote());
         pourc.setText(String.valueOf(t.getNote())+" %");
-
         pu.setOnMouseClicked(mouseEvent -> {
             try {
                 ps.noter(t.getId(),100);
@@ -114,6 +116,9 @@ public class ParticipationController {
         });
 
     }
+
+
+
     @FXML
     void navhome(MouseEvent mouseEvent) {
         redirect("/home.fxml",mouseEvent);
@@ -162,5 +167,30 @@ public class ParticipationController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    private void shareOnFacebook(MouseEvent event ) {
+        // Récupérer les détails du tournoi que vous souhaitez partager
+        String tournoiDetails = "Détails du tournoi : " + R.getText() + ", " + J.getText() + ", " + T.getText() + ", " + D.getText();
+
+        // Utiliser l'API de partage Facebook pour partager les détails du tournoi
+        // Remplacez "YOUR_FACEBOOK_APP_ID" par votre ID d'application Facebook
+        String facebookShareUrl = "https://www.facebook.com/dialog/share?414632347985913&display=popup&quote=" + tournoiDetails;
+
+        // Ouvrir le lien de partage dans un navigateur ou un WebView
+        try {
+            Desktop.getDesktop().browse(new URI(facebookShareUrl));
+        } catch (IOException | URISyntaxException e) {
+            // Gérer les exceptions en cas de problème avec l'ouverture du lien
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Erreur lors du partage sur Facebook : " + e.getMessage(), ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

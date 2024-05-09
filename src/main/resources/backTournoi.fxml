@@ -154,6 +154,12 @@
                   <Font name="System Italic" size="36.0" />
                </font>
             </Text>
+            <Button layoutX="1201.0" layoutY="174.0" prefHeight="55.0" prefWidth="54.0" style="-fx-background-color: #FFFFFF;" textFill="WHITE" />
+            <ImageView fx:id="statisticsButton" fitHeight="55.0" fitWidth="54.0" layoutX="1201.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/stat.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <GridPane layoutX="32.0" layoutY="243.0" prefHeight="591.0" prefWidth="1276.0">
@@ -218,7 +224,6 @@
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
                   <Label fx:id="n3" alignment="CENTER" layoutX="156.0" layoutY="200.0" prefHeight="21.0" prefWidth="115.0" text="NomTournoi" textAlignment="CENTER" />
-                  <ImageView fx:id="i3" fitHeight="200.0" fitWidth="200.0" layoutX="113.0" pickOnBounds="true" preserveRatio="true" />
                   <Button fx:id="supp3" layoutX="41.0" layoutY="240.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="126.0" text="supprimer">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -237,6 +242,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <ImageView fx:id="i3" fitHeight="200.0" fitWidth="200.0" layoutX="118.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
